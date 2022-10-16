@@ -1,14 +1,16 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    <h2 @click="store.increment">count is {{":"}} {{store.count}}</h2>
   </div>
 </template>
 
 <script setup>
-  import {useCounterStore} from "@/stores/counter.js";
-  const store = useCounterStore(); 
-  console.log(store.count)
+  import {useCalendarStore} from "@/stores/calendar.js";
+  const calendar = useCalendarStore(); 
+  calendar.init()
+  .then(data => {
+    console.log(data);
+  })
 </script>
 
 <style>

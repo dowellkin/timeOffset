@@ -1,6 +1,33 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+
+import EHapi from "@/packages/everHourAPI";
+
+EHapi.setToken('use your token');
+EHapi.me()
+  .then(res => {
+    console.log(res)
+    const id = res.id;
+
+    EHapi.time(id, {
+      from: new Date(new Date().setDate(1)),
+      to: lastMonthDay()
+    })
+    .then(console.log)
+  })
+
+
+function lastMonthDay() {
+  const date = new Date();
+  const currentmonth = date.getMonth();
+  const nextmonth = currentmonth + 1;
+  const nextmonthfirstday = new Date(date.getFullYear(), nextmonth, 1);
+  const oneday = 1 * 24 * 3600 * 1000;
+  const lasttime = new Date(nextmonthfirstday-oneday);
+  console.log(lasttime)
+  return lasttime;
+}
 </script>
 
 <template>
