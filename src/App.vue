@@ -3,8 +3,9 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 
 import EHapi from "@/packages/everHourAPI";
+import {useCalendarStore} from "@/stores/calendar.js";
 
-EHapi.setToken('use your token');
+EHapi.setToken('');
 EHapi.me()
   .then(res => {
     console.log(res)
@@ -16,6 +17,9 @@ EHapi.me()
     })
     .then(console.log)
   })
+
+const calendar = useCalendarStore();
+calendar.init();
 
 
 function lastMonthDay() {
@@ -40,6 +44,7 @@ function lastMonthDay() {
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <a-button> hello </a-button>
       </nav>
     </div>
   </header>
