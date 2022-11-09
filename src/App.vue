@@ -1,117 +1,69 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { useEHourStore } from "@/stores/everhour.js";
+import { useRouter } from 'vue-router'
+import { ref } from 'vue';
 
-import EHapi from "@/packages/everHourAPI";
-import {useCalendarStore} from "@/stores/calendar.js";
+const router = useRouter();
 
-EHapi.setToken('');
-EHapi.me()
-  .then(res => {
-    console.log(res)
-    const id = res.id;
+const EHstore = useEHourStore();
+EHstore.init();
 
-    EHapi.time(id, {
-      from: new Date(new Date().setDate(1)),
-      to: lastMonthDay()
-    })
-    .then(console.log)
-  })
+console.log(EHstore)
+router.beforeEach(async (to, from, next) => {
+  if(to.meta.requireLoggedIn && !EHstore.loggedIn) next({name: 'login'})
+  else if (to.name == 'login' && EHstore.loggedIn) next({name: 'home'})
+  else next()
+})
 
-const calendar = useCalendarStore();
-calendar.init();
-
-
-function lastMonthDay() {
-  const date = new Date();
-  const currentmonth = date.getMonth();
-  const nextmonth = currentmonth + 1;
-  const nextmonthfirstday = new Date(date.getFullYear(), nextmonth, 1);
-  const oneday = 1 * 24 * 3600 * 1000;
-  const lasttime = new Date(nextmonthfirstday-oneday);
-  console.log(lasttime)
-  return lasttime;
+const logout = () => {
+  EHstore.$reset()
+  router.push({name: 'login'})
 }
+
+const selectedKeys = ref(['1']);
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <a-button> hello </a-button>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <a-layout class="layout">
+    <a-layout-header>
+      <div class="logo" />
+      <a-menu
+        v-model:selectedKeys="selectedKeys"
+        theme="dark"
+        mode="horizontal"
+        :style="{ lineHeight: '64px' }"
+      >
+        <a-menu-item key="1">
+          {{EHstore.loggedIn ? 'Data' : 'Login'}}
+        </a-menu-item>
+        <a-menu-item v-if="EHstore.loggedIn" key="logout" @click="logout">Logout</a-menu-item>
+      </a-menu>
+    </a-layout-header>
+    <a-layout-content style="padding: 0 50px">
+      <a-breadcrumb style="margin: 16px 0">
+      </a-breadcrumb>
+      <div :style="{ background: '#fff', padding: '24px', minHeight: '280px' }">
+        <router-view />
+      </div>
+    </a-layout-content>
+    <a-layout-footer style="text-align: center">
+      Timcher ©2022 Created by Alexandr Korolev
+    </a-layout-footer>
+  </a-layout>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.site-layout-content {
+  min-height: 280px;
+  padding: 24px;
+  background: #fff;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+[data-theme='dark'] .site-layout-content {
+  background: #141414;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.ant-layout {
+  min-height: 100%;
 }
 </style>

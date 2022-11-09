@@ -1,10 +1,9 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
 import workingCalendar from "@/packages/workingCalendar";
 
 export const useCalendarStore = defineStore("calendar", {
   state: () => ({
-    calendar: null,
+    _calendar: null,
     loading: true,
   }),
 
@@ -13,12 +12,21 @@ export const useCalendarStore = defineStore("calendar", {
       return new Promise((resolve, reject) => {
         workingCalendar()
           .then((data) => {
-            this.calendar = data
+            this._calendar = data;
             this.loading = false;
             resolve(data);
           })
           .catch(reject);
       });
-    }
+    },
+  },
+
+  getters: {
+    calendar: (state) => state._calendar,
+    isLoggedIn: (state) => state.loggedIn,
+    tasks: (state) => state._tasks,
+    self: (state) => state._self,
+    hours: (state) =>
+      state?._tasks?.map((el) => el.time).reduce((a, b) => a + b) / 3600,
   }
 });
