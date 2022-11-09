@@ -23,10 +23,22 @@ export const useCalendarStore = defineStore("calendar", {
 
   getters: {
     calendar: (state) => state._calendar,
-    isLoggedIn: (state) => state.loggedIn,
-    tasks: (state) => state._tasks,
-    self: (state) => state._self,
-    hours: (state) =>
-      state?._tasks?.map((el) => el.time).reduce((a, b) => a + b) / 3600,
+    hourForNow: (state) => {
+      const d = new Date()
+      const month = d.getMonth();
+      const date = d.getDate();
+      if (!state._calendar) return 0;
+      const daysArr = state._calendar[month].days;
+      const days = [];
+      for(let i = 1; i < date + 1; i++) {
+        if (!daysArr[i].isWeekend) {
+          console.log(i)
+          days.push(daysArr[i]);
+        }
+      }
+      console.log(days);
+
+      return days.length * 8
+    }
   }
 });

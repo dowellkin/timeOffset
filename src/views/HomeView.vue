@@ -34,6 +34,12 @@ const tracked = computed(() => {
       you tracked: {{tracked}}
     </p>
     <p>
+      must at end of day: {{calendar.hourForNow}}h
+    </p>
+    <p>
+      bias: {{-(calendar.hourForNow * 60 - (hours * 60 + minutes)) / 60}}h
+    </p>
+    <p>
       month: {{workingHours}}h
     </p>
     <p>
