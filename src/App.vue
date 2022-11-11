@@ -1,26 +1,31 @@
 <script setup>
 import { useEHourStore } from "@/stores/everhour.js";
 import { useRouter } from 'vue-router'
-import { ref } from 'vue';
+import { ref, nextTick } from 'vue';
 
 const router = useRouter();
 
 const EHstore = useEHourStore();
 EHstore.init();
 
-console.log(EHstore)
 router.beforeEach(async (to, from, next) => {
   if(to.meta.requireLoggedIn && !EHstore.loggedIn) next({name: 'login'})
   else if (to.name == 'login' && EHstore.loggedIn) next({name: 'home'})
   else next()
 })
 
+const selectedKeys = ref(['1']);
+
 const logout = () => {
+  EHstore.logout()
   EHstore.$reset()
+  nextTick()
+  .then(() => {
+    selectedKeys.value = ['1'];
+  })
   router.push({name: 'login'})
 }
 
-const selectedKeys = ref(['1']);
 </script>
 
 <template>

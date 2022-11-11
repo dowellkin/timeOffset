@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="login-wrapper">
+    <loginForm @submit="formSubmit"/>
     <p>
       get API Token at 
       <a href="https://app.everhour.com/#/account/profile" target="__blank">your everhour profile</a>.
     </p>
-    <loginForm @submit="formSubmit"/>
   </div>
 </template>
 
@@ -26,5 +26,11 @@ const formSubmit = (data) => {
 </script>
 
 <style>
-
+.login-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+}
 </style>

@@ -1,7 +1,4 @@
-function map(value, low1, high1, low2, high2) {
-  return low2 + ((value - low1) * (high2 - low2)) / (high1 - low1);
-}
+import Hours from "@/packages/hours"
+import { map } from "@/packages/functions.js";
 
-export {
-    map
-}
+export { map, Hours };

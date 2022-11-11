@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import EHapi from "@/packages/everHourAPI";
 
+const storageName = "EH_token";
+
 export const useEHourStore = defineStore("EHour", {
   state: () => ({
     apiKey: null,
@@ -47,7 +49,7 @@ export const useEHourStore = defineStore("EHour", {
               resolve(res);
             })
             .catch((err) => {
-              console.log("err", err);
+              console.error("err", err);
               reject(err);
             })
             .finally(() => {
@@ -58,7 +60,6 @@ export const useEHourStore = defineStore("EHour", {
         return new Promise((resolve, reject) => {
           EHapi.me()
             .then((res) => {
-              console.log(res);
               this._self = res;
               const id = this._self.id;
 
@@ -68,20 +69,18 @@ export const useEHourStore = defineStore("EHour", {
                   resolve(res);
                 })
                 .catch((err) => {
-                  console.log("err", err);
+                  console.error("err", err);
                   reject(err);
                 })
                 .finally(() => {
+                  console.log('loaded')
                   this.loading = false;
                 });
             })
             .catch((err) => {
-              console.log(`outer err`, err);
+              console.error(`outer err`, err);
               reject(err);
             })
-            .finally(() => {
-              this.loading = false;
-            });
         });
       }
     },
@@ -94,13 +93,16 @@ export const useEHourStore = defineStore("EHour", {
     },
 
     init() {
-      const token = localStorage.getItem("EH_token");
+      const token = localStorage.getItem(storageName);
       if (token) {
         this.setToken(token);
         this.loggedIn = true;
-        console.log(token, this.loading);
       }
     },
+
+    logout() {
+      localStorage.removeItem(storageName);
+    }
   },
 
   getters: {
