@@ -1,9 +1,11 @@
 const link = "https://rabota.by/calendar";
 const metaData = ["days", "weekends", "working", "hours"];
 
+const proxy = `https://thingproxy.freeboard.io/fetch/${link}`;
+
 export default () => {
   return new Promise((resolve, reject) => {
-    fetch(link)
+    fetch(proxy)
       .then((result) => result.text())
       .then((res) => {
         try {
