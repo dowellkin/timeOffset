@@ -60,7 +60,7 @@ const bias = computed(() => {
 
     <p>
       разница: 
-      <a-tag :color="bias < 0 ? 'red' : 'green'">
+      <a-tag :color="bias.toNumber() < 0 ? 'red' : 'green'">
         {{bias}}
       </a-tag>
     </p>

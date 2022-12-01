@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import EHapi from "@/packages/everHourAPI";
+import { isReferencedIdentifier } from '@vue/compiler-core';
 
 const storageName = "EH_token";
 
@@ -110,7 +111,12 @@ export const useEHourStore = defineStore("EHour", {
     isLoggedIn: (state) => state.loggedIn,
     tasks: (state) => state._tasks,
     self: (state) => state._self,
-    hours: (state) => state?._tasks?.map(el => el.time).reduce((a,b) => a + b) / 3600
+    hours: (state) => {
+      const times = state?._tasks?.map(el => el.time);
+      if (times.length == 0) return 0;
+      const result = times.reduce((a,b) => a + b) / 3600;
+      return result;
+    }
   },
 });
 
