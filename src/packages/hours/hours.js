@@ -26,7 +26,7 @@ class Hours {
   }
 
   toString() {
-    return `${this.hour}h ${Math.abs(this.minute)}m`;
+    return `${this.hour}h ${Math.abs(Math.floor(this.minute))}m`;
   }
 
   toNumber() {
@@ -34,7 +34,8 @@ class Hours {
   }
 
   fromMinutes(minutes) {
-    this.hour = Math.floor(minutes / 60);
+    const func = minutes < 0 ? Math.ceil : Math.floor;
+    this.hour = func(minutes / 60);
     this.minute = minutes % 60;
     return this;
   }
@@ -54,7 +55,6 @@ class Hours {
   sub(...args) {
     args = [this, ...args];
     args = args.map((hours) => {
-      console.log(`hh`, hours, args)
       return hours.toNumber()
     });
     let totalMins = args.reduce((a, b) => a - b);
