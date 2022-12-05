@@ -42,6 +42,23 @@ const api = {
         "X-Api-Key": this.token,
       },
     }).then((res) => res.json());
+  },
+
+  currentTimer(){
+    return new Promise((resolve) => {
+      fetch(`${BASE_URL}/timers/current`, {
+        headers: {
+          "X-Api-Key": this.token,
+        },
+      }).then((res) => res.json())
+      .then(res => {
+        if(res.status !== 'active') {
+          resolve(0)
+        } else {
+          resolve(res.duration)
+        }
+      });
+    })
   }
 };
 

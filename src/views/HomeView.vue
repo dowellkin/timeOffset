@@ -10,6 +10,7 @@ calendar.init();
 
 const EHstore = useEHourStore();
 EHstore.getMonthTasks();
+EHstore.getCurrentTimer();
 
 const loading = computed(() => {
   return EHstore.isLoading || calendar.isLoading;

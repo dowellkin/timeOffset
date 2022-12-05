@@ -9,6 +9,7 @@ export const useEHourStore = defineStore("EHour", {
     apiKey: null,
     loggedIn: false,
     loading: false,
+    _currentTimer: 0,
     _tasks: null,
     _self: null,
   }),
@@ -37,7 +38,7 @@ export const useEHourStore = defineStore("EHour", {
           .finally(() => {
             this.loading = false;
           });
-      })
+      });
     },
 
     getTasks(data) {
@@ -74,14 +75,14 @@ export const useEHourStore = defineStore("EHour", {
                   reject(err);
                 })
                 .finally(() => {
-                  console.log('loaded')
+                  console.log("loaded");
                   this.loading = false;
                 });
             })
             .catch((err) => {
               console.error(`outer err`, err);
               reject(err);
-            })
+            });
         });
       }
     },
@@ -90,6 +91,15 @@ export const useEHourStore = defineStore("EHour", {
       return this.getTasks({
         from: new Date(new Date().setDate(1)),
         to: lastMonthDay(),
+      });
+    },
+
+    getCurrentTimer() {
+      return new Promise((resolve) => {
+        EHapi.currentTimer().then((res) => {
+          this._currentTimer = res;
+          resolve(res);
+        });
       });
     },
 
@@ -103,7 +113,7 @@ export const useEHourStore = defineStore("EHour", {
 
     logout() {
       localStorage.removeItem(storageName);
-    }
+    },
   },
 
   getters: {
@@ -111,12 +121,14 @@ export const useEHourStore = defineStore("EHour", {
     isLoggedIn: (state) => state.loggedIn,
     tasks: (state) => state._tasks,
     self: (state) => state._self,
+    currentTimer: (state) => state._currentTimer,
     hours: (state) => {
-      const times = state?._tasks?.map(el => el.time);
+      const times = state?._tasks?.map((el) => el.time);
       if (times.length == 0) return 0;
-      const result = times.reduce((a,b) => a + b) / 3600;
+      const result =
+        (times.reduce((a, b) => a + b) + state._currentTimer) / 3600;
       return result;
-    }
+    },
   },
 });
 
@@ -127,6 +139,5 @@ function lastMonthDay() {
   const nextmonthfirstday = new Date(date.getFullYear(), nextmonth, 1);
   const oneday = 1 * 24 * 3600 * 1000;
   const lasttime = new Date(nextmonthfirstday - oneday);
-  console.log(lasttime);
   return lasttime;
 }
