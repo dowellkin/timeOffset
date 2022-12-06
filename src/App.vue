@@ -1,7 +1,7 @@
 <script setup>
 import { useEHourStore } from "@/stores/everhour.js";
-import { useRouter } from 'vue-router'
-import { ref, nextTick } from 'vue';
+import { useRouter, useRoute } from 'vue-router'
+import { ref, computed, nextTick } from 'vue';
 
 const router = useRouter();
 
@@ -14,14 +14,16 @@ router.beforeEach(async (to, from, next) => {
   else next()
 })
 
-const selectedKeys = ref(['1']);
+const selectedKeys = computed(() => {
+  return [useRoute().name]
+});
 
 const logout = () => {
   EHstore.logout()
   EHstore.$reset()
   nextTick()
   .then(() => {
-    selectedKeys.value = ['1'];
+    selectedKeys.value = ['login'];
   })
   router.push({name: 'login'})
 }
@@ -38,8 +40,11 @@ const logout = () => {
         mode="horizontal"
         :style="{ lineHeight: '64px' }"
       >
-        <a-menu-item key="1">
+        <a-menu-item :key="EHstore.loggedIn ? 'home' : 'login'" @click="router.push({name: EHstore.loggedIn ? 'home' : 'login'})">
           {{EHstore.loggedIn ? 'Data' : 'Login'}}
+        </a-menu-item>
+        <a-menu-item v-if="EHstore.loggedIn" key="calculator" @click="router.push({name: 'calculator'})">
+          Calculator
         </a-menu-item>
         <a-menu-item v-if="EHstore.loggedIn" key="logout" @click="logout">Logout</a-menu-item>
       </a-menu>

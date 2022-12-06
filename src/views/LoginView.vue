@@ -1,5 +1,5 @@
 <template>
-  <div class="login-wrapper">
+  <div class="login-view">
     <loginForm @submit="formSubmit"/>
     <p>
       get API Token at 
@@ -26,7 +26,7 @@ const formSubmit = (data) => {
 </script>
 
 <style>
-.login-wrapper {
+.login-view {
   display: flex;
   align-items: center;
   justify-content: center;
