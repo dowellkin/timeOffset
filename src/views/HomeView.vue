@@ -4,13 +4,13 @@ import { useEHourStore } from "@/stores/everhour.js";
 import { map, Hours } from "@/utils.js"
 import { computed } from "vue"
 import { LoadingOutlined } from '@ant-design/icons-vue';
+import _ from "lodash"
 
 const calendar = useCalendarStore();
 calendar.init();
 
 const EHstore = useEHourStore();
-EHstore.getMonthTasks();
-EHstore.getCurrentTimer();
+updateClock();
 
 const loading = computed(() => {
   return EHstore.isLoading || calendar.isLoading;
@@ -39,44 +39,55 @@ const bias = computed(() => {
   return tracked.value.sub(h);
 })
 
+function updateClock() {
+  EHstore.getMonthTasks();
+  EHstore.getCurrentTimer();
+}
+
+const updateClockThrottled = _.throttle(updateClock, 1000)
+
 </script>
 
 <template>
-  <main v-if="!loading">
-    <a-row :gutter="[16,16]">
+  <main>
+    <a-row :gutter="[16,16]" type="flex" wrap>
       <a-col>
-        <a-avatar :src="EHstore.self.avatarUrlLarge" :size="128" />
+        <a-avatar v-if="!loading" :src="EHstore.self.avatarUrlLarge" :size="128" />
+        <a-skeleton-avatar v-else active :size="128"/>
       </a-col>
 
-      <a-col>
-        <a-typography-title :level="2">
-          {{EHstore.self.name}}
-        </a-typography-title>
-
-        <a-typography-text :level="5" type="secondary">
-          {{EHstore.self.headline}}@{{EHstore.self.team.name}}
-        </a-typography-text>
+      <a-col flex="auto">
+        <template v-if="!loading">
+          <a-typography-title :level="2">
+            {{EHstore.self.name}}
+          </a-typography-title>
+          
+          <a-typography-text :level="5" type="secondary">
+            {{EHstore.self.headline}}@{{EHstore.self.team.name}}
+          </a-typography-text>
+        </template>
+        <a-skeleton v-else active :paragraph="{ rows: 2 }" />
       </a-col>
     </a-row>
 
-    <p>
-      разница: 
-      <a-tag :color="bias.toNumber() < 0 ? 'red' : 'green'">
-        {{bias}}
-      </a-tag>
-    </p>
+    <template v-if="!loading">
+      <p>
+        разница: 
+        <a-tag :color="bias.toNumber() < 0 ? 'red' : 'green'" @click="updateClockThrottled">
+          {{bias}}
+        </a-tag>
+      </p>
 
-    <p>
-      оттрекано: {{tracked.toString()}}
-    </p>
-    <p>
-      должно быть оттрекано к концу дня: {{calendar.hourForNow}}h
-    </p>
-    <p>
-      часов в месяце: {{workingHours}}h
-    </p>
+      <p>
+        оттрекано: {{tracked.toString()}}
+      </p>
+      <p>
+        должно быть оттрекано к концу дня: {{calendar.hourForNow}}h
+      </p>
+      <p>
+        часов в месяце: {{workingHours}}h
+      </p>
+    </template>
+    <a-skeleton v-else active :paragraph="{ rows: 4 }" />
   </main>
-  <div v-else>
-    <loading-outlined style="font-size: 128px" />
-  </div>
 </template>

@@ -117,7 +117,7 @@ export const useEHourStore = defineStore("EHour", {
   },
 
   getters: {
-    isLoading: (state) => state.loading,
+    isLoading: (state) => state.loading && !state._tasks,
     isLoggedIn: (state) => state.loggedIn,
     tasks: (state) => state._tasks,
     self: (state) => state._self,

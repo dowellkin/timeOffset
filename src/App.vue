@@ -52,7 +52,7 @@ const logout = () => {
     <a-layout-content style="padding: 0 50px">
       <a-breadcrumb style="margin: 16px 0">
       </a-breadcrumb>
-      <div :style="{ background: '#fff', padding: '24px', minHeight: '280px' }">
+      <div class="main-content__wrapper">
         <router-view />
       </div>
     </a-layout-content>
@@ -75,5 +75,20 @@ const logout = () => {
 
 .ant-layout {
   min-height: 100%;
+  background-color: var(--color-background-mute);
+  transition: background-color .5s ease;
+}
+.ant-layout-footer{
+  background-color: var(--color-background-mute);
+  color: var(--color-text);
+  transition: background-color .5s ease,
+              color .5s ease;
+}
+
+.main-content__wrapper {
+  background-color: var(--color-background);
+  padding: 24px;
+  min-height: 280px;
+  transition: background-color .5s ease;
 }
 </style>

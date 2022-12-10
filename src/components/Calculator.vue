@@ -27,8 +27,6 @@ const calendar = useCalendarStore();
 calendar.init();
 
 const EHstore = useEHourStore();
-EHstore.getMonthTasks();
-EHstore.getCurrentTimer();
 
 const workingHours = computed(() => {
   if(!calendar.calendar) return 0
