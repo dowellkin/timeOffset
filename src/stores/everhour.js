@@ -129,6 +129,22 @@ export const useEHourStore = defineStore("EHour", {
         (times.reduce((a, b) => a + b) + state._currentTimer) / 3600;
       return result;
     },
+    todayHours: (state) => {
+      const times = state?._tasks?.filter((el) => {
+        const d = new Date();
+        const todayParts = [
+          d.getFullYear(),
+          d.getMonth() + 1,
+          d.getDate()
+        ]
+        const today = todayParts.join('-');
+        return el.date === today;
+      }).map((el) => el.time);
+      if (times.length == 0) return 0;
+      const result =
+        (times.reduce((a, b) => a + b) + state._currentTimer) / 3600;
+      return result;
+    }
   },
 });
 

@@ -17,7 +17,6 @@ const loading = computed(() => {
 });
 
 const hours = computed(() => {
-  console.log(EHstore.hours);
   return Math.floor(EHstore.hours);
 })
 const minutes = computed(() => {
@@ -37,6 +36,15 @@ const tracked = computed(() => {
 const bias = computed(() => {
   const h = Hours(calendar.hourForNow * 60)
   return tracked.value.sub(h);
+})
+
+const todayHours = computed(() => {
+  return Hours(EHstore.todayHours * 60)
+})
+
+const todayBias = computed(() => {
+  const h = Hours(8 * 60)
+  return todayHours.value.sub(h);
 })
 
 function updateClock() {
@@ -87,7 +95,18 @@ const updateClockThrottled = _.throttle(updateClock, 1000)
       <p>
         часов в месяце: {{workingHours}}h
       </p>
+
+      <p>
+        оттрекано за сегодня {{ todayHours }}
+      </p>
+
+      <p>
+        осталось на сегодня
+        <a-tag :color="todayBias.toNumber() < 0 ? 'red' : 'green'" @click="updateClockThrottled">
+          {{ todayBias }}
+        </a-tag>
+      </p>
     </template>
-    <a-skeleton v-else active :paragraph="{ rows: 4 }" />
+    <a-skeleton v-else active :paragraph="{ rows: 6 }" />
   </main>
 </template>
