@@ -58,6 +58,6 @@ export default async () => {
   // });
 
   const year = (new Date()).getFullYear();
-  const test = await import(`./${year}.json`)
+  const test = await import(`./c-${year}.json`)
   return test.default
 }
