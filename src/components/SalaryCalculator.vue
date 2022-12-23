@@ -24,8 +24,7 @@ const rate = computed(() => {
 })
 
 const bias = computed(() => {
-  // const h = calendar.hourForNow
-  const h = 5;
+  const h = calendar.hourForNow
   return Math.min(hours.value - h, 30);
 })
 
