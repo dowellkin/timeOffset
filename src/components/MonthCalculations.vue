@@ -43,5 +43,5 @@ export default {
             часов в месяце: {{ workingHours }}h
         </p>
     </template>
-    <a-skeleton v-else :paragraph="{rows: 4}" :title="false"></a-skeleton>
+    <a-skeleton v-else :paragraph="{rows: 4}" :title="false" active></a-skeleton>
 </template>

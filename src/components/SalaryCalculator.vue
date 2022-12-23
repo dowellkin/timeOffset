@@ -80,5 +80,5 @@ const loading = computed(() => {
       полная зп при нышених переработках: {{ biasSalary.toFixed(2) }}$
     </p>
   </div>
-  <a-skeleton v-else :paragraph="{rows: 5}" :title="false"></a-skeleton>
+  <a-skeleton v-else :paragraph="{rows: 5}" :title="false" active></a-skeleton>
 </template>
