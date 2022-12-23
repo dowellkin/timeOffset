@@ -1,6 +1,6 @@
 <script setup>
 import User from "@/components/UserInfo.vue"
-import calculator from "@/components/Calculator.vue"
+import SalaryCalculator from "@/components/SalaryCalculator.vue"
 import MonthCalculations from "@/components/MonthCalculations.vue"
 import DayCalculations from "@/components/DayCalculations.vue"
 import { ref } from "vue"
@@ -45,7 +45,7 @@ const cardsSpan = ref({
 
       <a-col v-bind="cardsSpan">
         <a-card title="Рассчёт зп">
-          <calculator></calculator>
+          <SalaryCalculator></SalaryCalculator>
         </a-card>
       </a-col>
     </a-row>

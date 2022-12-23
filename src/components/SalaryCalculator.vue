@@ -1,23 +1,3 @@
-<template>
-  <div v-if="!loading" class="calculator">
-    Введите свою зп в месяц:
-    <a-input class="salary-input" type="number" v-model:value="salary" addonAfter="$" :maxlength="5"></a-input>
-
-    <p>
-        Реальные значения могут отличаться, вычесленные значения примерны.
-    </p>
-    <p>
-        rate: {{rate.toFixed(2)}}$
-    </p>
-    <p>
-        зп на нышенем времени: {{nowSalary.toFixed(2)}}$
-    </p>
-    <p>
-        полная зп при нышених переработках: {{biasSalary.toFixed(2)}}$
-    </p>
-  </div>
-</template>
-
 <script setup>
 import { useEHourStore } from "@/stores/everhour.js";
 import { useCalendarStore } from "@/stores/calendar.js";
@@ -74,3 +54,24 @@ const loading = computed(() => {
     max-width: 300px;
 }
 </style>
+
+<template>
+  <div v-if="!loading" class="calculator">
+    Введите свою зп в месяц:
+    <a-input class="salary-input" type="number" v-model:value="salary" addonAfter="$" :maxlength="5"></a-input>
+
+    <p>
+      Реальные значения могут отличаться, вычесленные значения примерны.
+    </p>
+    <p>
+      rate: {{ rate.toFixed(2) }}$
+    </p>
+    <p>
+      зп на нышенем времени: {{ nowSalary.toFixed(2) }}$
+    </p>
+    <p>
+      полная зп при нышених переработках: {{ biasSalary.toFixed(2) }}$
+    </p>
+  </div>
+  <a-skeleton v-else :paragraph="{rows: 5}" :title="false"></a-skeleton>
+</template>

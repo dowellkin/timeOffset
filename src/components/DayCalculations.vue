@@ -33,4 +33,5 @@ export default {
             </a-tag>
         </p>
     </template>
+    <a-skeleton v-else :paragraph="{rows: 2}" :title="false"></a-skeleton>
 </template>

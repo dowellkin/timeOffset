@@ -1,10 +1,9 @@
 <script setup>
 import { useEHourStore } from "@/stores/everhour.js";
 import { useRouter, useRoute } from 'vue-router'
-import { ref, computed, nextTick } from 'vue';
+import { computed } from 'vue';
 
 const router = useRouter();
-
 const EHstore = useEHourStore();
 EHstore.init();
 
@@ -17,17 +16,6 @@ router.beforeEach(async (to, from, next) => {
 const selectedKeys = computed(() => {
   return [useRoute().name]
 });
-
-const logout = () => {
-  EHstore.logout()
-  EHstore.$reset()
-  nextTick()
-  .then(() => {
-    selectedKeys.value = ['login'];
-  })
-  router.push({name: 'login'})
-}
-
 </script>
 
 <template>
@@ -42,22 +30,22 @@ const logout = () => {
         <a-menu-item v-if="!EHstore.loggedIn" key="login" @click="router.push({name: 'login'})">
           Login
         </a-menu-item>
+
         <a-menu-item v-if="EHstore.loggedIn" key="home" @click="router.push({name: 'home'})">
           Data
         </a-menu-item>
-        <!-- <a-menu-item v-if="EHstore.loggedIn" key="calculator" @click="router.push({name: 'calculator'})">
-          Calculator
-        </a-menu-item>
-        <a-menu-item v-if="EHstore.loggedIn" key="logout" @click="logout">Logout</a-menu-item> -->
       </a-menu>
     </a-layout-header>
+
     <a-layout-content class="layout-content">
       <a-breadcrumb style="margin: 16px 0">
       </a-breadcrumb>
+
       <div class="main-content__wrapper">
         <router-view />
       </div>
     </a-layout-content>
+
     <a-layout-footer style="text-align: center">
       Timcher ©2022 Created by Alexandr Korolev
     </a-layout-footer>
