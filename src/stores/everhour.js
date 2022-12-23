@@ -8,6 +8,8 @@ export const useEHourStore = defineStore("EHour", {
     apiKey: null,
     loggedIn: false,
     loading: false,
+    meLoading: false,
+    currentStateLoading: false,
     _currentTimer: 0,
     _tasks: null,
     _self: null,
@@ -20,69 +22,31 @@ export const useEHourStore = defineStore("EHour", {
       localStorage.setItem("EH_token", token);
     },
 
-    me() {
-      this.loading = true;
-      return new Promise((resolve, reject) => {
-        EHapi.me()
-          .then((res) => {
-            console.log(res);
-            this._self = res;
-            this.loggedIn = true;
-            resolve(res);
-          })
-          .catch((err) => {
-            console.error(`outer err`, err);
-            reject(err);
-          })
-          .finally(() => {
-            this.loading = false;
-          });
-      });
+    async me() {
+      if (this._self) {
+        return this._self;
+      }
+      
+      this.meLoading = true;
+      try {
+        this._self = await EHapi.me();
+        this.loggedIn = true;
+        return this._self;
+      } finally {
+        this.meLoading = false;
+      }
     },
 
-    getTasks(data) {
-      this.loading = true;
-      if (this._self) {
-        return new Promise((resolve, reject) => {
-          EHapi.time(this._self.id, data)
-            .then((res) => {
-              this._tasks = res;
-              resolve(res);
-            })
-            .catch((err) => {
-              console.error("err", err);
-              reject(err);
-            })
-            .finally(() => {
-              this.loading = false;
-            });
-        });
-      } else {
-        return new Promise((resolve, reject) => {
-          EHapi.me()
-            .then((res) => {
-              this._self = res;
-              const id = this._self.id;
+    async getTasks(data) {
+      if (this.loading) return;
 
-              EHapi.time(id, data)
-                .then((res) => {
-                  this._tasks = res;
-                  resolve(res);
-                })
-                .catch((err) => {
-                  console.error("err", err);
-                  reject(err);
-                })
-                .finally(() => {
-                  console.log("loaded");
-                  this.loading = false;
-                });
-            })
-            .catch((err) => {
-              console.error(`outer err`, err);
-              reject(err);
-            });
-        });
+      this.loading = true;
+      const me = await this.me();
+      try {
+        this._tasks = await EHapi.time(me.id, data);
+        return this._tasks;
+      } finally {
+        this.loading = false;
       }
     },
 
@@ -94,11 +58,20 @@ export const useEHourStore = defineStore("EHour", {
     },
 
     getCurrentTimer() {
+      if (this.currentStateLoading) return;
+      this.currentStateLoading = true;
       return new Promise((resolve) => {
         EHapi.currentTimer().then((res) => {
-          this._currentTimer = res;
+          if(res?.status == "stopped"){
+            this._currentTimer = 0;
+          } else {
+            this._currentTimer = res;
+          }
           resolve(res);
-        });
+        })
+        .finally(() => {
+          this.currentStateLoading = false;
+        })
       });
     },
 
@@ -116,7 +89,7 @@ export const useEHourStore = defineStore("EHour", {
   },
 
   getters: {
-    isLoading: (state) => state.loading && !state._tasks,
+    isLoading: (state) => (state.loading || state.meLoading) && !state._tasks,
     isLoggedIn: (state) => state.loggedIn,
     tasks: (state) => state._tasks,
     self: (state) => state._self,
@@ -129,21 +102,19 @@ export const useEHourStore = defineStore("EHour", {
       return result;
     },
     todayHours: (state) => {
-      const times = state?._tasks?.filter((el) => {
-        const d = new Date();
-        const todayParts = [
-          d.getFullYear(),
-          d.getMonth() + 1,
-          d.getDate()
-        ]
-        const today = todayParts.join('-');
-        return el.date === today;
-      }).map((el) => el.time);
+      const times = state?._tasks
+        ?.filter((el) => {
+          const d = new Date();
+          const todayParts = [d.getFullYear(), d.getMonth() + 1, d.getDate()];
+          const today = todayParts.join("-");
+          return el.date === today;
+        })
+        .map((el) => el.time);
       if (times.length == 0) return 0;
       const result =
         (times.reduce((a, b) => a + b) + state._currentTimer) / 3600;
       return result;
-    }
+    },
   },
 });
 

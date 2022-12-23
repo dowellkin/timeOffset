@@ -1,0 +1,1974 @@
+[
+  {
+    "meta": {
+      "days": "31",
+      "weekends": "10",
+      "working": "21",
+      "hours": "168",
+      "title": "Январь"
+    },
+    "days": {
+      "1": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день. Новый год"
+      },
+      "2": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день. Новый год"
+      },
+      "3": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "4": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "5": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "6": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "7": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день. Рождество Христово (православное Рождество)"
+      },
+      "8": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": ""
+      },
+      "9": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "10": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "11": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "12": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "13": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "14": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "15": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "16": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "17": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "18": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "19": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "20": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "21": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "22": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "23": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "24": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "25": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "26": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "27": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "28": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "29": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "30": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "31": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      }
+    }
+  },
+  {
+    "meta": {
+      "days": "28",
+      "weekends": "8",
+      "working": "20",
+      "hours": "160",
+      "title": "Февраль"
+    },
+    "days": {
+      "1": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "2": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "3": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "4": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "5": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "6": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "7": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "8": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "9": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "10": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "11": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "12": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "13": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "14": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "15": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "16": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "17": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "18": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "19": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "20": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "21": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "22": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "23": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "24": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "25": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "26": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "27": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "28": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      }
+    }
+  },
+  {
+    "meta": {
+      "days": "31",
+      "weekends": "9",
+      "working": "22",
+      "hours": "176",
+      "title": "Март"
+    },
+    "days": {
+      "1": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "2": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "3": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "4": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "5": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "6": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "7": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "8": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день. День женщин."
+      },
+      "9": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "10": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "11": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "12": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "13": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "14": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "15": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "16": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "17": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "18": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "19": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "20": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "21": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "22": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "23": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "24": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "25": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "26": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "27": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "28": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "29": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "30": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "31": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      }
+    }
+  },
+  {
+    "meta": {
+      "days": "30",
+      "weekends": "11",
+      "working": "19",
+      "hours": "152",
+      "title": "Апрель"
+    },
+    "days": {
+      "1": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "2": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "3": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "4": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "5": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "6": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "7": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "8": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "9": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "10": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "11": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "12": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "13": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "14": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "15": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "16": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "17": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "18": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "19": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "20": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "21": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "22": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "23": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "24": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "25": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день. Радуница (по календарю православной\n                                    конфессии)"
+      },
+      "26": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "27": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "28": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "29": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "30": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "NaN": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      }
+    }
+  },
+  {
+    "meta": {
+      "days": "31",
+      "weekends": "10",
+      "working": "21",
+      "hours": "168",
+      "title": "Май"
+    },
+    "days": {
+      "1": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день. Праздник Труда"
+      },
+      "2": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "3": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "4": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "5": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "6": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "7": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "8": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "9": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день. День Победы"
+      },
+      "10": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "11": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "12": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "13": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "14": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "15": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "16": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "17": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "18": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "19": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "20": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "21": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "22": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "23": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "24": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "25": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "26": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "27": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "28": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "29": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "30": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "31": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      }
+    }
+  },
+  {
+    "meta": {
+      "days": "30",
+      "weekends": "8",
+      "working": "22",
+      "hours": "176",
+      "title": "Июнь"
+    },
+    "days": {
+      "1": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "2": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "3": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "4": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "5": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "6": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "7": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "8": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "9": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "10": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "11": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "12": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "13": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "14": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "15": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "16": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "17": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "18": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "19": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "20": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "21": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "22": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "23": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "24": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "25": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "26": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "27": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "28": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "29": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "30": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      }
+    }
+  },
+  {
+    "meta": {
+      "days": "31",
+      "weekends": "11",
+      "working": "20",
+      "hours": "160",
+      "title": "Июль"
+    },
+    "days": {
+      "1": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "2": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "3": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день. День Независимости Республики Беларусь (День\n                                    Республики)"
+      },
+      "4": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "5": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "6": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "7": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "8": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "9": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "10": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "11": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "12": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "13": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "14": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "15": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "16": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "17": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "18": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "19": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "20": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "21": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "22": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "23": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "24": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "25": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "26": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "27": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "28": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "29": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "30": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "31": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "NaN": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      }
+    }
+  },
+  {
+    "meta": {
+      "days": "31",
+      "weekends": "8",
+      "working": "23",
+      "hours": "184",
+      "title": "Август"
+    },
+    "days": {
+      "1": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "2": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "3": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "4": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "5": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "6": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "7": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "8": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "9": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "10": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "11": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "12": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "13": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "14": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "15": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "16": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "17": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "18": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "19": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "20": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "21": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "22": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "23": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "24": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "25": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "26": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "27": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "28": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "29": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "30": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "31": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "NaN": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      }
+    }
+  },
+  {
+    "meta": {
+      "days": "30",
+      "weekends": "9",
+      "working": "21",
+      "hours": "168",
+      "title": "Сентябрь"
+    },
+    "days": {
+      "1": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "2": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "3": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "4": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "5": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "6": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "7": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "8": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "9": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "10": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "11": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "12": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "13": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "14": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "15": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "16": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "17": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "18": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "19": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "20": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "21": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "22": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "23": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "24": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "25": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "26": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "27": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "28": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "29": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "30": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      }
+    }
+  },
+  {
+    "meta": {
+      "days": "31",
+      "weekends": "9",
+      "working": "22",
+      "hours": "176",
+      "title": "Октябрь"
+    },
+    "days": {
+      "1": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "2": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "3": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "4": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "5": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "6": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "7": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "8": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "9": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "10": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "11": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "12": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "13": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "14": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "15": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "16": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "17": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "18": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "19": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "20": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "21": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "22": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "23": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "24": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "25": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "26": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "27": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "28": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "29": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "30": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "31": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      }
+    }
+  },
+  {
+    "meta": {
+      "days": "30",
+      "weekends": "9",
+      "working": "21",
+      "hours": "168",
+      "title": "Ноябрь"
+    },
+    "days": {
+      "1": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "2": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "3": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "4": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день. День народного единства"
+      },
+      "5": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "6": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "7": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день. День Октябрьской революции"
+      },
+      "8": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "9": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "10": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "11": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "12": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "13": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "14": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "15": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "16": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "17": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "18": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "19": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "20": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "21": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "22": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "23": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "24": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "25": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "26": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "27": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "28": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "29": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "30": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      }
+    }
+  },
+  {
+    "meta": {
+      "days": "31",
+      "weekends": "11",
+      "working": "20",
+      "hours": "160",
+      "title": "Декабрь"
+    },
+    "days": {
+      "1": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "2": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "3": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "4": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "5": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "6": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "7": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "8": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "9": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "10": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "11": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "12": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "13": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "14": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "15": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "16": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "17": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "18": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "19": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "20": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "21": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "22": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "23": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "24": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "25": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день. Рождество Христово (католическое Рождество)"
+      },
+      "26": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "27": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "28": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "29": {
+        "isWeekend": false,
+        "isShort": false,
+        "reason": ""
+      },
+      "30": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      },
+      "31": {
+        "isWeekend": true,
+        "isShort": false,
+        "reason": "Выходной день"
+      }
+    }
+  }
+]

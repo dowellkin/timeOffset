@@ -4,8 +4,6 @@ import { useCalendarStore } from "@/stores/calendar.js";
 import { computed, ref } from "vue"
 
 const calendar = useCalendarStore();
-calendar.init();
-
 const EHstore = useEHourStore();
 
 const workingHours = computed(() => {
@@ -26,20 +24,30 @@ const rate = computed(() => {
 })
 
 const bias = computed(() => {
-  const h = calendar.hourForNow
-  return hours.value - h;
+  // const h = calendar.hourForNow
+  const h = 5;
+  return Math.min(hours.value - h, 30);
 })
 
 const nowSalary = computed(() => {
-  const worked = Math.min(hours.value, workingHours.value);
-  const rateMul = bias.value > 0 ? 2 : 0;
-  return (worked + bias.value * rateMul) * rate.value;
+  const mustWorking = +workingHours.value;
+  const worked = Math.min(hours.value, mustWorking);
+  let overflowVal = 0;
+  let rateMul = 0;
+  if (hours.value > mustWorking) {
+    rateMul = bias.value > 0 ? 2 : 0;
+    overflowVal = bias.value
+  } else {
+    overflowVal = 0
+  }
+  
+  return (worked + overflowVal * rateMul) * rate.value;
 })
 
 const biasSalary = computed(() => {
   const rateMul = bias.value > 0 ? 2 : 1;
   const overpay = bias.value * rate.value * rateMul;
-  
+
   return +salary.value + overpay;
 })
 

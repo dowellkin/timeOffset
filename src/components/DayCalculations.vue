@@ -23,14 +23,14 @@ export default {
 <template>
     <template v-if="!loading">
         <p>
-            оттрекано за сегодня {{ todayHours }}
-        </p>
-        
-        <p>
-            осталось на сегодня
+            разница на сегодня
             <a-tag :color="todayBias.toNumber() < 0 ? 'red' : 'green'" @click="updateClockThrottled">
                 {{ todayBias }}
             </a-tag>
+        </p>
+
+        <p>
+            оттрекано за сегодня {{ todayHours }}
         </p>
     </template>
     <a-skeleton v-else :paragraph="{rows: 2}" :title="false"></a-skeleton>
