@@ -33,20 +33,22 @@ const logout = () => {
 <template>
   <a-layout class="layout">
     <a-layout-header>
-      <div class="logo" />
       <a-menu
         v-model:selectedKeys="selectedKeys"
         theme="dark"
         mode="horizontal"
         :style="{ lineHeight: '64px' }"
       >
-        <a-menu-item :key="EHstore.loggedIn ? 'home' : 'login'" @click="router.push({name: EHstore.loggedIn ? 'home' : 'login'})">
-          {{EHstore.loggedIn ? 'Data' : 'Login'}}
+        <a-menu-item v-if="!EHstore.loggedIn" key="login" @click="router.push({name: 'login'})">
+          Login
         </a-menu-item>
-        <a-menu-item v-if="EHstore.loggedIn" key="calculator" @click="router.push({name: 'calculator'})">
+        <a-menu-item v-if="EHstore.loggedIn" key="home" @click="router.push({name: 'home'})">
+          Data
+        </a-menu-item>
+        <!-- <a-menu-item v-if="EHstore.loggedIn" key="calculator" @click="router.push({name: 'calculator'})">
           Calculator
         </a-menu-item>
-        <a-menu-item v-if="EHstore.loggedIn" key="logout" @click="logout">Logout</a-menu-item>
+        <a-menu-item v-if="EHstore.loggedIn" key="logout" @click="logout">Logout</a-menu-item> -->
       </a-menu>
     </a-layout-header>
     <a-layout-content style="padding: 0 50px">
@@ -86,8 +88,8 @@ const logout = () => {
 }
 
 .main-content__wrapper {
-  background-color: var(--color-background);
-  padding: 24px;
+  /* background-color: var(--color-background);
+  padding: 24px; */
   min-height: 280px;
   transition: background-color .5s ease;
 }
