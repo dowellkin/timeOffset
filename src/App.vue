@@ -51,7 +51,7 @@ const logout = () => {
         <a-menu-item v-if="EHstore.loggedIn" key="logout" @click="logout">Logout</a-menu-item> -->
       </a-menu>
     </a-layout-header>
-    <a-layout-content style="padding: 0 50px">
+    <a-layout-content class="layout-content">
       <a-breadcrumb style="margin: 16px 0">
       </a-breadcrumb>
       <div class="main-content__wrapper">
@@ -65,14 +65,20 @@ const logout = () => {
 </template>
 
 <style scoped>
-.site-layout-content {
-  min-height: 280px;
-  padding: 24px;
-  background: #fff;
+.layout-content {
+  padding: 0 50px;
 }
 
-[data-theme='dark'] .site-layout-content {
-  background: #141414;
+@media (max-width: 768px) {
+  .layout-content {
+    padding: 0 25px;
+  }
+}
+
+@media (max-width: 576px) {
+  .layout-content {
+    padding: 0 10px;
+  }
 }
 
 .ant-layout {
@@ -80,6 +86,7 @@ const logout = () => {
   background-color: var(--color-background-mute);
   transition: background-color .5s ease;
 }
+
 .ant-layout-footer{
   background-color: var(--color-background-mute);
   color: var(--color-text);
@@ -88,8 +95,6 @@ const logout = () => {
 }
 
 .main-content__wrapper {
-  /* background-color: var(--color-background);
-  padding: 24px; */
   min-height: 280px;
   transition: background-color .5s ease;
 }
