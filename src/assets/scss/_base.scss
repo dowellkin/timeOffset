@@ -1,4 +1,4 @@
-@use 'sass:math';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
@@ -22,15 +22,15 @@
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
 
-  --color-green-900: #116D08;
-  --color-green-800: #20840D;
-  --color-green-700: #34A415;
-  --color-green-600: #4DC41F;
-  --color-green-500: #6BE42B;
-  --color-green-400: #98EE5D;
-  --color-green-300: #B7F67E;
-  --color-green-200: #D6FCAA;
-  --color-green-100: #EDFDD4;
+  --color-primary-900: #116D08;
+  --color-primary-800: #20840D;
+  --color-primary-700: #34A415;
+  --color-primary-600: #4DC41F;
+  --color-primary-500: #6BE42B;
+  --color-primary-400: #98EE5D;
+  --color-primary-300: #B7F67E;
+  --color-primary-200: #D6FCAA;
+  --color-primary-100: #EDFDD4;
   
   --color-red-900: #78092F;
   --color-red-800: #910F31;
@@ -63,36 +63,9 @@
   --color-border-hover: var(--vt-c-divider-light-1);
 
   --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
+  --color-text: var(--color-black-800);
 
   --section-gap: 160px;
-}
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
-
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
-
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
-  }
-} */
-
-$default-font-size: 16px;
-
-@function stripUnits($number) {
-  @return math.div($number, ($number * 0 + 1));
-}
-
-@function em($val) {
-  $global-font-size: stripUnits($default-font-size);
-  $actual-value: stripUnits($val);
-  $result: calc($actual-value / $global-font-size);
-  @return $result + 0em;
 }
 
 *,
@@ -102,6 +75,10 @@ $default-font-size: 16px;
   margin: 0;
   position: relative;
   font-weight: normal;
+}
+
+html {
+  font-size: 10px;
 }
 
 body {
@@ -119,81 +96,86 @@ body {
 }
 
 h1, .h1 {
-  font-size: em(42px);
-  line-height: em(52px);
+  font-size: rem(42px);
+  line-height: rem(52px);
   font-weight: 700;
 }
 
 h2, .h2 {
-  font-size: em(32px);
-  line-height: em(42px);
+  font-size: rem(32px);
+  line-height: rem(42px);
   font-weight: 700;
 }
 
 h3, .h3 {
-  font-size: em(24px);
-  line-height: em(32px);
+  font-size: rem(24px);
+  line-height: rem(32px);
   font-weight: 600;
 }
 
 h4, .h4 {
-  font-size: em(20px);
-  line-height: em(24px);
+  font-size: rem(20px);
+  line-height: rem(24px);
   font-weight: 500;
 }
 
 h5, .h5 {
-  font-size: em(18px);
-  line-height: em(20px);
+  font-size: rem(18px);
+  line-height: rem(20px);
   font-weight: 500;
 }
 
 h6, .h6 {
-  font-size: em(16px);
-  line-height: em(20px);
+  font-size: rem(16px);
+  line-height: rem(20px);
   font-weight: 500;
 }
 
 .text-1 {
-  font-size: em(16px);
-  line-height: em(26px);
+  font-size: rem(16px);
+  line-height: rem(26px);
   font-weight: 400;
 }
 
 .text-2 {
-  font-size: em(14px);
-  line-height: em(20px);
+  font-size: rem(14px);
+  line-height: rem(20px);
   font-weight: 400;
 }
 
 .text-description {
-  font-size: em(12px);
-  line-height: em(16px);
+  font-size: rem(12px);
+  line-height: rem(16px);
   font-weight: 500;
 }
 
 .text-label {
-  font-size: em(14px);
-  line-height: em(22px);
+  font-size: rem(14px);
+  line-height: rem(22px);
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .text-button-lg {
-  font-size: em(18px);
-  line-height: em(22px);
+  font-size: rem(18px);
+  line-height: rem(22px);
   font-weight: 500;
 }
 
 .text-button {
-  font-size: em(16px);
-  line-height: em(20px);
+  font-size: rem(16px);
+  line-height: rem(20px);
   font-weight: 500;
 }
 
 .text-button-sm {
-  font-size: em(14px);
-  line-height: em(28px);
+  font-size: rem(14px);
+  line-height: rem(28px);
   font-weight: 500;
+}
+
+#app {
+  font-weight: normal;
+  height: 100%;
 }

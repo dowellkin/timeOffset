@@ -28,19 +28,16 @@ const selectedKeys = computed(() => {
         :style="{ lineHeight: '64px' }"
       >
         <a-menu-item v-if="!EHstore.loggedIn" key="login" @click="router.push({name: 'login'})">
-          Login
+          Вход
         </a-menu-item>
 
         <a-menu-item v-if="EHstore.loggedIn" key="home" @click="router.push({name: 'home'})">
-          Data
+          Данные пользователя
         </a-menu-item>
       </a-menu>
     </a-layout-header>
 
     <a-layout-content class="layout-content">
-      <a-breadcrumb style="margin: 16px 0">
-      </a-breadcrumb>
-
       <div class="main-content__wrapper">
         <router-view />
       </div>
@@ -71,12 +68,12 @@ const selectedKeys = computed(() => {
 
 .ant-layout {
   min-height: 100%;
-  background-color: var(--color-background-mute);
+  background-color: var(--color-black-100);
   transition: background-color .5s ease;
 }
 
 .ant-layout-footer{
-  background-color: var(--color-background-mute);
+  background-color: var(--color-black-100);
   color: var(--color-text);
   transition: background-color .5s ease,
               color .5s ease;

@@ -1,11 +1,7 @@
 <template>
   <div class="login-view">
-    <a-card title="Login">
+    <a-card>
       <loginForm @submit="formSubmit"/>
-      <p>
-        get API Token at 
-        <a href="https://app.everhour.com/#/account/profile" target="__blank">your everhour profile</a>.
-      </p>
     </a-card>
   </div>
 </template>
