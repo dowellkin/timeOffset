@@ -179,3 +179,23 @@ h6, .h6 {
   font-weight: normal;
   height: 100%;
 }
+
+.hide-lg-flex {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .hide-lg-flex {
+    display: flex;
+  }
+}
+
+.show-lg {
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .show-lg {
+    display: none;
+  }
+}

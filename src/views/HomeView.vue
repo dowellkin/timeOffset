@@ -3,6 +3,7 @@ import User from "@/components/UserInfo.vue"
 import SalaryCalculator from "@/components/SalaryCalculator.vue"
 import MonthCalculations from "@/components/MonthCalculations.vue"
 import DayCalculations from "@/components/DayCalculations.vue"
+import UserCard from "@/components/UserCard.vue";
 import { ref } from "vue"
 
 import { useCalendarStore } from "@/stores/calendar.js";
@@ -25,11 +26,16 @@ const cardsSpan = ref({
 <template>
   <main>
     <a-row :gutter="[16,16]" wrap>
-      <a-col v-bind="cardsSpan">
+      <a-col :span="24" class="show-lg">
+        <a-card>
+          <UserCard></UserCard>
+        </a-card>
+      </a-col>
+      <!-- <a-col v-bind="cardsSpan">
         <a-card title="Пользователь">
           <User></User>
         </a-card>
-      </a-col>
+      </a-col> -->
 
       <a-col v-bind="cardsSpan">
         <a-card title="Месяц">

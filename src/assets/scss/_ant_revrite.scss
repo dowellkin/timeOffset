@@ -76,7 +76,7 @@
     }
 }
 
-.ant-btn {
+.ant-btn-primary {
     border-radius: rem(5);
     padding-left: rem(30);
     padding-right: rem(30);
@@ -115,4 +115,12 @@
 [ant-click-animating-without-extra-node='true']::after,
 .ant-click-animating-node {
     box-shadow: 0 0 0 0 var(--color-primary-600);
+}
+
+a {
+    color: var(--color-primary-600);
+
+    &:hover {
+        color: var(--color-primary-800);
+    }
 }

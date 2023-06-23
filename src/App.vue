@@ -1,4 +1,6 @@
 <script setup>
+import CurrentDay from "@/components/CurrentDay.vue";
+import UserInfo from "@/components/UserInfo2.vue";
 import { useEHourStore } from "@/stores/everhour.js";
 import { useRouter, useRoute } from 'vue-router'
 import { computed } from 'vue';
@@ -21,20 +23,30 @@ const selectedKeys = computed(() => {
 <template>
   <a-layout class="layout">
     <a-layout-header>
-      <a-menu
-        v-model:selectedKeys="selectedKeys"
-        theme="dark"
-        mode="horizontal"
-        :style="{ lineHeight: '64px' }"
-      >
-        <a-menu-item v-if="!EHstore.loggedIn" key="login" @click="router.push({name: 'login'})">
-          Вход
-        </a-menu-item>
+      <div class="header-content__wrapper">
+        <a-menu
+          v-model:selectedKeys="selectedKeys"
+          theme="dark"
+          mode="horizontal"
+          :style="{ lineHeight: '64px' }"
+        >
+          <a-menu-item v-if="!EHstore.loggedIn" key="login" @click="router.push({name: 'login'})">
+            Вход
+          </a-menu-item>
+  
+          <a-menu-item v-if="EHstore.loggedIn" key="home" @click="router.push({name: 'home'})">
+            Данные пользователя
+          </a-menu-item>
+        </a-menu>
 
-        <a-menu-item v-if="EHstore.loggedIn" key="home" @click="router.push({name: 'home'})">
-          Данные пользователя
-        </a-menu-item>
-      </a-menu>
+        <template v-if="EHstore.loggedIn">
+          <CurrentDay class="header-content__day hide-lg-flex">
+          </CurrentDay>
+  
+          <UserInfo class="header-content__user hide-lg-flex">
+          </UserInfo>
+        </template>
+      </div>
     </a-layout-header>
 
     <a-layout-content class="layout-content">
@@ -82,5 +94,19 @@ const selectedKeys = computed(() => {
 .main-content__wrapper {
   min-height: 280px;
   transition: background-color .5s ease;
+}
+
+.header-content__wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+
+.header-content__day {
+  justify-self: center;
+}
+
+.header-content__user {
+  justify-self: end;
 }
 </style>
