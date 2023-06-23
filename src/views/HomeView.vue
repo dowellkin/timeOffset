@@ -1,9 +1,9 @@
 <script setup>
-import User from "@/components/UserInfo.vue"
 import SalaryCalculator from "@/components/SalaryCalculator.vue"
 import MonthCalculations from "@/components/MonthCalculations.vue"
 import DayCalculations from "@/components/DayCalculations.vue"
 import UserCard from "@/components/UserCard.vue";
+import CustomCard from "@/components/CustomCard.vue";
 import { ref } from "vue"
 
 import { useCalendarStore } from "@/stores/calendar.js";
@@ -19,41 +19,38 @@ EHstore.getCurrentTimer();
 const cardsSpan = ref({
   xs: { span: 24 },
   lg: { span: 12 },
-  xl: { span: 8 },
+  xl: { span: 12 },
 })
 </script>
 
 <template>
   <main>
-    <a-row :gutter="[16,16]" wrap>
-      <a-col :span="24" class="show-lg">
-        <a-card>
-          <UserCard></UserCard>
-        </a-card>
-      </a-col>
-      <!-- <a-col v-bind="cardsSpan">
-        <a-card title="Пользователь">
-          <User></User>
-        </a-card>
-      </a-col> -->
-
-      <a-col v-bind="cardsSpan">
-        <a-card title="Месяц">
-          <MonthCalculations></MonthCalculations>
-        </a-card>
-      </a-col>
-
-      <a-col v-bind="cardsSpan">
-        <a-card title="День">
-          <DayCalculations></DayCalculations>
-        </a-card>
-      </a-col>
-
-      <a-col v-bind="cardsSpan">
-        <a-card title="Рассчёт зп">
-          <SalaryCalculator></SalaryCalculator>
-        </a-card>
-      </a-col>
-    </a-row>
+    <div class="container">
+      <a-row :gutter="[16,16]" wrap>
+        <a-col :span="24" class="show-lg">
+          <a-card>
+            <UserCard></UserCard>
+          </a-card>
+        </a-col>
+  
+        <a-col v-bind="cardsSpan">
+          <CustomCard title="Кол-во часов за месяц">
+            <MonthCalculations></MonthCalculations>
+          </CustomCard>
+        </a-col>
+  
+        <a-col v-bind="cardsSpan">
+          <CustomCard title="Кол-во часов за сегодня">
+            <DayCalculations></DayCalculations>
+          </CustomCard>
+        </a-col>
+  
+        <a-col v-bind="cardsSpan">
+          <CustomCard title="Рассчёт зп">
+            <SalaryCalculator></SalaryCalculator>
+          </CustomCard>
+        </a-col>
+      </a-row>
+    </div>
   </main>
 </template>

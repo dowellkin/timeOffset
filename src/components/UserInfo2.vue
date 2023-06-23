@@ -8,7 +8,6 @@ const router = useRouter();
 const EHstore = useEHourStore();
 
 const loading = computed(() => {
-    console.log(EHstore);
     return EHstore.meLoading;
 });
 
