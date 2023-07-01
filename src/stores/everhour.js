@@ -102,19 +102,19 @@ export const useEHourStore = defineStore("EHour", {
       return result;
     },
     todayHours: (state) => {
+      const d = new Date();
+      const todayParts = [
+        d.getFullYear(),
+        String(d.getMonth() + 1).padStart(2, "0"),
+        String(d.getDate()).padStart(2, "0"),
+      ];
+      const today = todayParts.join("-");      
       const times = state?._tasks
         ?.filter((el) => {
-          const d = new Date();
-          const todayParts = [
-            d.getFullYear(),
-            String(d.getMonth() + 1).padStart(2, "0"),
-            String(d.getDate()).padStart(2, "0"),
-          ];
-          const today = todayParts.join("-");
           return el.date === today;
         })
         .map((el) => el.time);
-      if (times.length == 0) return 0;
+      if (times.length == 0) return state._currentTimer / 3600;
       const result =
         (times.reduce((a, b) => a + b) + state._currentTimer) / 3600;
       return result;
