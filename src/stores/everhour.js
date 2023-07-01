@@ -105,7 +105,11 @@ export const useEHourStore = defineStore("EHour", {
       const times = state?._tasks
         ?.filter((el) => {
           const d = new Date();
-          const todayParts = [d.getFullYear(), d.getMonth() + 1, d.getDate()];
+          const todayParts = [
+            d.getFullYear(),
+            String(d.getMonth() + 1).padStart(2, "0"),
+            String(d.getDate()).padStart(2, "0"),
+          ];
           const today = todayParts.join("-");
           return el.date === today;
         })
