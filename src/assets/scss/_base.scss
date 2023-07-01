@@ -204,3 +204,24 @@ h6, .h6 {
   max-width: rem(1380);
   margin: 0 auto;
 }
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: rem(24);
+    }
+
+    &__title {
+      color: var(--color-black-600);
+      font-size: rem(16);
+      line-height: rem(20);
+      letter-spacing: rem(-0.2);
+    }
+
+    &__value {
+      margin-left: rem(40);
+    }
+}

@@ -56,6 +56,11 @@
 
 .ant-card-body {
     padding: rem(40);
+
+
+    @include breakpoint(sm) {
+        padding: rem(20);
+    }
 }
 
 .ant-card {

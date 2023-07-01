@@ -1,6 +1,6 @@
 <script setup>
 import CurrentDay from "@/components/CurrentDay.vue";
-import UserInfo from "@/components/UserInfo2.vue";
+import UserInfo from "@/components/UserInfo.vue";
 import { useEHourStore } from "@/stores/everhour.js";
 import { useRouter, useRoute } from 'vue-router'
 import { computed } from 'vue';
@@ -56,7 +56,7 @@ const selectedKeys = computed(() => {
     </a-layout-content>
 
     <a-layout-footer style="text-align: center">
-      Timcher ©2022 Created by Alexandr Korolev
+      Timcher ©{{ new Date().getFullYear() }} Created by Alexandr Korolev
     </a-layout-footer>
   </a-layout>
 </template>

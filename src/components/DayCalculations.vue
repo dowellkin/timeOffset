@@ -1,5 +1,6 @@
 <script>
 import timeCalculations from "@/modules/timeCalculations.js"
+import CustomChip from "@/components/CustomChip.vue";
 
 export default {
     setup() {
@@ -16,22 +17,44 @@ export default {
             todayHours,
             todayBias,
         }
+    },
+    components: {
+        CustomChip
     }
 }
 </script>
 
 <template>
-    <template v-if="!loading">
-        <p>
-            разница на сегодня
-            <a-tag :color="todayBias.toNumber() < 0 ? 'red' : 'green'" @click="updateClockThrottled">
-                {{ todayBias }}
-            </a-tag>
-        </p>
+    <div class="day-calculations">
+        <template v-if="!loading">
+            <div class="row">
+                <div class="row__title">
+                    Сегодня:
+                </div>
 
-        <p>
-            оттрекано за сегодня {{ todayHours }}
-        </p>
-    </template>
-    <a-skeleton v-else :paragraph="{rows: 2}" :title="false" active></a-skeleton>
+                <CustomChip class="row__value">{{ todayHours }}</CustomChip>
+            </div>
+
+            <div class="row">
+                <div class="row__title">
+                    Разница:
+                </div>
+
+                <CustomChip class="row__value" :type="todayBias.toNumber() < 0 ? 'red' : 'green'">
+                    {{ todayBias.toNumber() > 0 ? "+" : "" }}{{ todayBias }}
+                </CustomChip>
+            </div>
+        </template>
+        <a-skeleton v-else :paragraph="{rows: 2}" :title="false" active></a-skeleton>
+    </div>
 </template>
+
+<style lang="scss">
+@use "@/assets/scss/variables.scss" as *;
+@use "@/assets/scss/mixins.scss" as *;
+
+.day-calculations {
+    max-width: rem(320);
+}
+
+</style>

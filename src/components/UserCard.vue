@@ -1,6 +1,6 @@
 <script setup>
     import CurrentDay from "@/components/CurrentDay.vue";
-    import UserInfo from "@/components/UserInfo2.vue";
+    import UserInfo from "@/components/UserInfo.vue";
 </script>
 
 <template>

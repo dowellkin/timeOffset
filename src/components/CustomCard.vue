@@ -25,6 +25,10 @@ const handledProps = defineProps({
 @use "@/assets/scss/mixins.scss" as *;
 
 .custom-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
     &__title {
         font-size: rem(14);
         line-height: rem(22);
@@ -33,6 +37,10 @@ const handledProps = defineProps({
         letter-spacing: rem(1);
         margin-bottom: rem(10);
         text-transform: uppercase;
+    }
+
+    &__item {
+        flex-grow: 1;
     }
 }
 </style>

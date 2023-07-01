@@ -28,7 +28,7 @@ const cardsSpan = ref({
     <div class="container">
       <a-row :gutter="[16,16]" wrap>
         <a-col :span="24" class="show-lg">
-          <a-card>
+          <a-card class="user-card">
             <UserCard></UserCard>
           </a-card>
         </a-col>
@@ -54,3 +54,13 @@ const cardsSpan = ref({
     </div>
   </main>
 </template>
+
+<style lang="scss">
+@use "@/assets/scss/variables.scss" as *;
+@use "@/assets/scss/mixins.scss" as *;
+
+.user-card .ant-card-body {
+  padding-top: rem(20);
+  padding-bottom: rem(20);
+}
+</style>
