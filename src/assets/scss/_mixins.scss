@@ -1,0 +1,26 @@
+@use 'sass:math';
+
+$default-font-size: 10px;
+
+@function stripUnits($number) {
+    @return math.div($number, ($number * 0 + 1));
+}
+
+@function rem($val) {
+    $global-font-size: stripUnits($default-font-size);
+    $actual-value: stripUnits($val);
+    $result: calc($actual-value / $global-font-size);
+    @return $result + 0rem;
+}
+
+@mixin breakpoint($name) {
+    @if not map-has-key($breakpoints, $name) {
+        @warn "Warning: `#{$name}` is not a valid breakpoint name.";
+    }
+
+    @else {
+        @media (max-width: map-get($breakpoints, $name)) {
+            @content;
+        }
+    }
+}

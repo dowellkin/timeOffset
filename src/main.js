@@ -7,7 +7,7 @@ import router from './router'
 import Antd from 'ant-design-vue';
 
 import 'ant-design-vue/dist/antd.css';
-import './assets/main.css'
+import './assets/scss/main.scss'
 
 const app = createApp(App)
 

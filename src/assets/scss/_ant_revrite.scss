@@ -1,0 +1,131 @@
+.ant-layout-header {
+    background-color: var(--color-black-100);
+    border-bottom: 1px solid var(--color-black-200);
+    height: auto;
+}
+
+.ant-menu.ant-menu-dark,
+.ant-menu-dark .ant-menu-sub,
+.ant-menu.ant-menu-dark .ant-menu-sub {
+    background-color: transparent
+}
+
+.ant-menu.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+    background: transparent;
+    color: var(--color-text);
+    font-size: rem(20);
+    line-height: rem(98);
+    min-width: rem(212);
+    text-align: center;
+    padding: 0;
+    position: relative;
+    letter-spacing: rem(-0.4);
+
+    &::after {
+        content: '';
+        position: absolute;
+        display: block;
+        left: 0;
+        right: 0;
+        bottom: rem(-1);
+        height: rem(3);
+        background-color: var(--color-primary-600);
+    }
+
+    span {
+        font-weight: 500;
+    }
+
+    &:hover {
+        background: transparent;
+    }
+}
+
+.ant-layout-content {
+    margin-top: rem(60);
+
+    @include breakpoint(xl) {
+        margin-top: rem(30);
+    }
+
+    @include breakpoint(md) {
+        margin-top: rem(30);
+    }
+}
+
+.ant-card-body {
+    padding: rem(40);
+
+
+    @include breakpoint(sm) {
+        padding: rem(20);
+    }
+}
+
+.ant-card {
+    border-radius: rem(5);
+    border: 1px solid var(--color-black-200);
+}
+
+.ant-form-item-control-input-content {
+    input {
+        border-radius: rem(5);
+        padding: rem(16);
+        font-size: rem(16);
+
+        &:focus, .ant-input-focused {
+            border-color: var(--color-primary-600);
+            box-shadow: 0 0 0 2px rgba(#4DC41F, 0.2);
+        }
+    }
+}
+
+.ant-btn-primary {
+    border-radius: rem(5);
+    padding-left: rem(30);
+    padding-right: rem(30);
+    font-size: rem(18);
+    height: auto;
+    line-height: rem(49);
+    color: var(--vt-c-white);
+    background-color: var(--color-primary-600);
+    border-color: transparent;
+
+    &:hover, &:focus {
+        background-color: var(--color-primary-700);
+        border-color: transparent;
+    }
+
+    &:active {
+        background-color: var(--color-primary-800);
+        border-color: transparent;
+    }
+
+    &[disabled] {
+        border-color: transparent;
+        color: var(--vt-c-white);
+        background-color: var(--color-primary-600);
+        opacity: 0.3;
+
+        &:hover, &:focus, &:active {
+            border-color: transparent;
+            color: var(--vt-c-white);
+            background-color: var(--color-primary-600);
+            opacity: 0.3;
+        }
+    }
+}
+
+[ant-click-animating-without-extra-node='true']::after,
+.ant-click-animating-node {
+    box-shadow: 0 0 0 0 var(--color-primary-600);
+}
+
+a {
+    color: var(--color-primary-600);
+
+    &:hover {
+        color: var(--color-primary-800);
+    }
+}

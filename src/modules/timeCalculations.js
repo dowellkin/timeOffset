@@ -14,6 +14,10 @@ export default () => {
     return EHstore.isLoading || calendar.isLoading;
   });
 
+  const calendarLoading = computed(() => {
+    return calendar.isLoading;
+  })
+
   const workingHours = computed(() => {
     if (!calendar.calendar) return 0;
     const month = new Date().getMonth();
@@ -54,5 +58,6 @@ export default () => {
     tracked,
     todayHours,
     todayBias,
+    calendarLoading,
   };
 }

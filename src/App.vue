@@ -1,4 +1,6 @@
 <script setup>
+import CurrentDay from "@/components/CurrentDay.vue";
+import UserInfo from "@/components/UserInfo.vue";
 import { useEHourStore } from "@/stores/everhour.js";
 import { useRouter, useRoute } from 'vue-router'
 import { computed } from 'vue';
@@ -21,33 +23,40 @@ const selectedKeys = computed(() => {
 <template>
   <a-layout class="layout">
     <a-layout-header>
-      <a-menu
-        v-model:selectedKeys="selectedKeys"
-        theme="dark"
-        mode="horizontal"
-        :style="{ lineHeight: '64px' }"
-      >
-        <a-menu-item v-if="!EHstore.loggedIn" key="login" @click="router.push({name: 'login'})">
-          Login
-        </a-menu-item>
+      <div class="header-content__wrapper">
+        <a-menu
+          v-model:selectedKeys="selectedKeys"
+          theme="dark"
+          mode="horizontal"
+          :style="{ lineHeight: '64px' }"
+        >
+          <a-menu-item v-if="!EHstore.loggedIn" key="login" @click="router.push({name: 'login'})">
+            Вход
+          </a-menu-item>
+  
+          <a-menu-item v-if="EHstore.loggedIn" key="home" @click="router.push({name: 'home'})">
+            Данные пользователя
+          </a-menu-item>
+        </a-menu>
 
-        <a-menu-item v-if="EHstore.loggedIn" key="home" @click="router.push({name: 'home'})">
-          Data
-        </a-menu-item>
-      </a-menu>
+        <template v-if="EHstore.loggedIn">
+          <CurrentDay class="header-content__day hide-lg-flex">
+          </CurrentDay>
+  
+          <UserInfo class="header-content__user hide-lg-flex">
+          </UserInfo>
+        </template>
+      </div>
     </a-layout-header>
 
     <a-layout-content class="layout-content">
-      <a-breadcrumb style="margin: 16px 0">
-      </a-breadcrumb>
-
       <div class="main-content__wrapper">
         <router-view />
       </div>
     </a-layout-content>
 
     <a-layout-footer style="text-align: center">
-      Timcher ©2022 Created by Alexandr Korolev
+      Timcher ©{{ new Date().getFullYear() }} Created by Alexandr Korolev
     </a-layout-footer>
   </a-layout>
 </template>
@@ -71,12 +80,12 @@ const selectedKeys = computed(() => {
 
 .ant-layout {
   min-height: 100%;
-  background-color: var(--color-background-mute);
+  background-color: var(--color-black-100);
   transition: background-color .5s ease;
 }
 
 .ant-layout-footer{
-  background-color: var(--color-background-mute);
+  background-color: var(--color-black-100);
   color: var(--color-text);
   transition: background-color .5s ease,
               color .5s ease;
@@ -85,5 +94,19 @@ const selectedKeys = computed(() => {
 .main-content__wrapper {
   min-height: 280px;
   transition: background-color .5s ease;
+}
+
+.header-content__wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+
+.header-content__day {
+  justify-self: center;
+}
+
+.header-content__user {
+  justify-self: end;
 }
 </style>
