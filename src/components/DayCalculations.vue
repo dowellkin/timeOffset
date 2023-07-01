@@ -44,6 +44,10 @@ export default {
                     {{ todayBias.toNumber() > 0 ? "+" : "" }}{{ todayBias }}
                 </CustomChip>
             </div>
+
+            <div class="row">
+                <a-progress :percent="todayHours.toNumber() / Math.abs(todayBias.toNumber())" :show-info="false"/>
+            </div>
         </template>
         <a-skeleton v-else :paragraph="{rows: 2}" :title="false" active></a-skeleton>
     </div>
