@@ -50,10 +50,10 @@ export const useEHourStore = defineStore("EHour", {
       }
     },
 
-    getMonthTasks() {
+    getMonthTasks(month = new Date().getMonth()) {
       return this.getTasks({
-        from: new Date(new Date().setDate(1)),
-        to: lastMonthDay(),
+        from: new Date(new Date().setMonth(month, 1)),
+        to: lastMonthDay(month),
       });
     },
 
@@ -122,10 +122,9 @@ export const useEHourStore = defineStore("EHour", {
   },
 });
 
-function lastMonthDay() {
+function lastMonthDay(interestedMonth = new Date().getMonth()) {
   const date = new Date();
-  const currentmonth = date.getMonth();
-  const nextmonth = currentmonth + 1;
+  const nextmonth = interestedMonth + 1;
   const nextmonthfirstday = new Date(date.getFullYear(), nextmonth, 1);
   const oneday = 1 * 24 * 3600 * 1000;
   const lasttime = new Date(nextmonthfirstday - oneday);

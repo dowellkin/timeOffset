@@ -1,6 +1,7 @@
 <script>
 import timeCalculations from "@/modules/timeCalculations.js"
 import CustomChip from "@/components/CustomChip.vue";
+import { Hours } from "@/utils.js";
 
 export default {
     setup() {
@@ -16,6 +17,7 @@ export default {
             updateClockThrottled,
             todayHours,
             todayBias,
+            Hours
         }
     },
     components: {
@@ -32,7 +34,7 @@ export default {
                     Сегодня:
                 </div>
 
-                <CustomChip class="row__value">{{ todayHours }}</CustomChip>
+                <CustomChip class="row__value" @click="updateClockThrottled">{{ todayHours }}</CustomChip>
             </div>
 
             <div class="row">
@@ -40,13 +42,13 @@ export default {
                     Разница:
                 </div>
 
-                <CustomChip class="row__value" :type="todayBias.toNumber() < 0 ? 'red' : 'green'">
+                <CustomChip class="row__value" :type="todayBias.toNumber() < 0 ? 'red' : 'green'" @click="updateClockThrottled">
                     {{ todayBias.toNumber() > 0 ? "+" : "" }}{{ todayBias }}
                 </CustomChip>
             </div>
 
             <div class="row">
-                <a-progress :percent="todayHours.toNumber() / Math.abs(todayBias.toNumber())" :show-info="false"/>
+                <a-progress :percent="todayHours.toNumber() / Hours(8 * 60).toNumber() * 100" :show-info="false"/>
             </div>
         </template>
         <a-skeleton v-else :paragraph="{rows: 2}" :title="false" active></a-skeleton>

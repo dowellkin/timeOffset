@@ -1,7 +1,7 @@
 // const link = "https://rabota.by/calendar";
 // const metaData = ["days", "weekends", "working", "hours"];
 
-export default async () => {
+export default async (forceYear) => {
   // return new Promise((resolve, reject) => {
   //   fetch(link)
   //     .then((result) => result.text())
@@ -57,7 +57,12 @@ export default async () => {
   //     });
   // });
 
-  const year = (new Date()).getFullYear();
+  let year;
+  if(forceYear) {
+    year = forceYear;
+  } else {
+    year = (new Date()).getFullYear();
+  }
   const test = await import(`./c-${year}.json`)
   return test.default
 }
