@@ -36,7 +36,7 @@ export default {
                     Норма за месяц:
                 </div>
 
-                <CustomChip class="row__value">{{ workingHours }}h</CustomChip>
+                <CustomChip class="row__value" @click="updateClockThrottled">{{ workingHours }}h</CustomChip>
             </div>
 
             <div class="row">
@@ -44,7 +44,7 @@ export default {
                     Должно быть на конец дня:
                 </div>
 
-                <CustomChip class="row__value">{{ calendar.hourForNow }}h</CustomChip>
+                <CustomChip class="row__value" @click="updateClockThrottled">{{ calendar.hourForNow }}h</CustomChip>
             </div>
 
             <div class="row">
@@ -52,7 +52,7 @@ export default {
                     Всего за месяц:
                 </div>
 
-                <CustomChip class="row__value">{{ tracked.toString() }}</CustomChip>
+                <CustomChip class="row__value" @click="updateClockThrottled">{{ tracked.toString() }}</CustomChip>
             </div>
 
             <div class="row">
@@ -60,7 +60,7 @@ export default {
                     Разница:
                 </div>
 
-                <CustomChip class="row__value" :type="bias.toNumber() < 0 ? 'red' : 'green'">
+                <CustomChip class="row__value" :type="bias.toNumber() < 0 ? 'red' : 'green'" @click="updateClockThrottled">
                     {{ bias.toNumber() > 0 ? "+" : "" }}{{ bias }}
                 </CustomChip>
             </div>

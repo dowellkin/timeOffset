@@ -24,6 +24,11 @@ export default () => {
     return calendar.calendar[month].meta.hours;
   });
 
+  const workingHoursForMonth = computed((month = new Date().getMonth()) => {
+    if (!calendar.calendar) return 0;
+    return calendar.calendar[month].meta.hours;
+  });
+
   const tracked = computed(() => {
     return Hours(EHstore.hours * 60);
   });
@@ -53,6 +58,7 @@ export default () => {
     calendar,
     loading,
     workingHours,
+    workingHoursForMonth,
     bias,
     updateClockThrottled,
     tracked,
