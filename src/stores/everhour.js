@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import EHapi from "@/packages/everHourAPI";
 
 const storageName = "EH_token";
+let intervalId = -1;
 
 export const useEHourStore = defineStore("EHour", {
   state: () => ({
@@ -62,10 +63,16 @@ export const useEHourStore = defineStore("EHour", {
       this.currentStateLoading = true;
       return new Promise((resolve) => {
         EHapi.currentTimer().then((res) => {
-          if(res?.status == "stopped"){
-            this._currentTimer = 0;
-          } else {
+          if (intervalId >= 0) {
+            clearInterval(intervalId);
+          }
+          
+          this._currentTimer = res;
+          if(res !== 0){
             this._currentTimer = res;
+            intervalId = setInterval(() => {
+              this._currentTimer += 1;
+            }, 1000);
           }
           resolve(res);
         })
