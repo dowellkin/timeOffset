@@ -2,6 +2,7 @@
 import timeCalculations from "@/modules/timeCalculations.js"
 import CustomChip from "@/components/CustomChip.vue";
 import { Hours } from "@/utils.js";
+import { useEHourStore } from "@/stores/everhour.js";
 
 export default {
     setup() {
@@ -17,7 +18,8 @@ export default {
             updateClockThrottled,
             todayHours,
             todayBias,
-            Hours
+            Hours,
+            store: useEHourStore()
         }
     },
     components: {
@@ -48,7 +50,11 @@ export default {
             </div>
 
             <div class="row">
-                <a-progress :percent="todayHours.toNumber() / Hours(8 * 60).toNumber() * 100" :show-info="false"/>
+                <a-progress
+                    :percent="todayHours.toNumber() / Hours(8 * 60).toNumber() * 100"
+                    :show-info="false"
+                    :status="store.currentTimer > 0 ? 'active' : false"
+                />
             </div>
         </template>
         <a-skeleton v-else :paragraph="{rows: 2}" :title="false" active></a-skeleton>
