@@ -24,6 +24,18 @@ export default {
     },
     components: {
         CustomChip
+    },
+    methods: {
+        getChipColor(bias) {
+            if(bias < -90) {
+                return "red";
+            }
+            if(bias < 0) {
+                return "yellow";
+            } else {
+                return "green";
+            }
+        }
     }
 }
 </script>
@@ -44,7 +56,7 @@ export default {
                     Разница:
                 </div>
 
-                <CustomChip class="row__value" :type="todayBias.toNumber() < 0 ? 'red' : 'green'" @click="updateClockThrottled">
+                <CustomChip class="row__value" :type="getChipColor(todayBias.toNumber())" @click="updateClockThrottled">
                     {{ todayBias.toNumber() > 0 ? "+" : "" }}{{ todayBias }}
                 </CustomChip>
             </div>
@@ -53,7 +65,7 @@ export default {
                 <a-progress
                     :percent="todayHours.toNumber() / Hours(8 * 60).toNumber() * 100"
                     :show-info="false"
-                    :status="store.currentTimer > 0 ? 'active' : false"
+                    :status="store.currentTimer > 0 ? 'active' : null"
                 />
             </div>
         </template>

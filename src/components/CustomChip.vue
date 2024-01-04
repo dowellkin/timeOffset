@@ -54,6 +54,12 @@ const typeClass = computed(() => {
         color: var(--color-red-600);
     }
 
+    &--type-yellow {
+        background-color: var(--color-yellow-100);
+        border: 1px solid var(--color-yellow-900);
+        color: var(--color-yellow-900);
+    }
+
     &__prepend {
         margin-right: 0.4ch;
         color: var(--color-black-600)
