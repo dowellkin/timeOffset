@@ -2,6 +2,7 @@
 // const metaData = ["days", "weekends", "working", "hours"];
 
 export default async (forceYear) => {
+  // uncomment and unblock cors to see results at console
   // return new Promise((resolve, reject) => {
   //   fetch(link)
   //     .then((result) => result.text())
