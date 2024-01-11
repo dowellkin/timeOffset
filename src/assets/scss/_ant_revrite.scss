@@ -10,8 +10,8 @@
     background-color: transparent
 }
 
-.ant-menu.ant-menu-dark .ant-menu-item-selected,
-.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+.ant-menu.ant-menu-dark .ant-menu-item,
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item {
     background: transparent;
     color: var(--color-text);
     font-size: rem(20);
@@ -30,7 +30,16 @@
         right: 0;
         bottom: rem(-1);
         height: rem(3);
-        background-color: var(--color-primary-600);
+        background-color: transparent;
+        transition: background-color .3s ease;
+        opacity: 0.2;
+    }
+
+    &.ant-menu-item-selected {
+        &::after {
+            background-color: var(--color-primary-600);
+            opacity: 1;
+        }
     }
 
     span {
@@ -39,6 +48,12 @@
 
     &:hover {
         background: transparent;
+
+        &:not(.ant-menu-item-selected) {
+            &::after {
+                background-color: var(--color-primary-600);
+            }
+        }
     }
 }
 

@@ -65,7 +65,7 @@ export default defineComponent({
     };
 
     const handleFinishFailed = errors => {
-      console.log(errors);
+      console.error(errors);
     };
 
     const buttonActive = computed(() => {

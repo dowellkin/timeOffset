@@ -6,16 +6,6 @@ import UserCard from "@/components/UserCard.vue";
 import CustomCard from "@/components/CustomCard.vue";
 import { ref } from "vue"
 
-import { useCalendarStore } from "@/stores/calendar.js";
-import { useEHourStore } from "@/stores/everhour.js";
-
-const calendar = useCalendarStore();
-calendar.init();
-
-const EHstore = useEHourStore();
-EHstore.getMonthTasks();
-EHstore.getCurrentTimer();
-
 const cardsSpan = ref({
   xs: { span: 24 },
   lg: { span: 12 },

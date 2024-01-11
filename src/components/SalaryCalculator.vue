@@ -33,8 +33,6 @@ const bias = computed(() => {
 
 const percentIncomint = computed(() => {
   const percents = percent.value / 100
-  console.log('if more', incoming.value * percents)
-  console.log('if less', 5000 * percents + (incoming.value - 5000) * percents * 0.3)
   if(incoming.value <= 5000) {
     return incoming.value * percents
   }

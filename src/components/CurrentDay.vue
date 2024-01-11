@@ -7,7 +7,7 @@ const todateString = ref(today.toLocaleDateString('ru', options));
 todateString.value = todateString.value.replace(' г.', '');
 todateString.value = todateString.value.replace(/\s(\d{4})/, ', $1');
 
-const isLeft = defineProps({
+const props = defineProps({
     left: {
         type: Boolean,
         default: false

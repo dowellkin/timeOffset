@@ -14,7 +14,6 @@ const EHstore = useEHourStore();
 const router = useRouter();
 
 const formSubmit = (data) => {
-  console.log(data);
   EHstore.setToken(data.token);
   EHstore.me()
   .then(() => {

@@ -27,7 +27,7 @@ export const useEHourStore = defineStore("EHour", {
       if (this._self) {
         return this._self;
       }
-      
+
       this.meLoading = true;
       try {
         this._self = await EHapi.me();
@@ -62,23 +62,24 @@ export const useEHourStore = defineStore("EHour", {
       if (this.currentStateLoading) return;
       this.currentStateLoading = true;
       return new Promise((resolve) => {
-        EHapi.currentTimer().then((res) => {
-          if (intervalId >= 0) {
-            clearInterval(intervalId);
-          }
-          
-          this._currentTimer = res;
-          if(res !== 0){
+        EHapi.currentTimer()
+          .then((res) => {
+            if (intervalId >= 0) {
+              clearInterval(intervalId);
+            }
+
             this._currentTimer = res;
-            intervalId = setInterval(() => {
-              this._currentTimer += 1;
-            }, 1000);
-          }
-          resolve(res);
-        })
-        .finally(() => {
-          this.currentStateLoading = false;
-        })
+            if (res !== 0) {
+              this._currentTimer = res;
+              intervalId = setInterval(() => {
+                this._currentTimer += 1;
+              }, 1000);
+            }
+            resolve(res);
+          })
+          .finally(() => {
+            this.currentStateLoading = false;
+          });
       });
     },
 
@@ -115,7 +116,7 @@ export const useEHourStore = defineStore("EHour", {
         String(d.getMonth() + 1).padStart(2, "0"),
         String(d.getDate()).padStart(2, "0"),
       ];
-      const today = todayParts.join("-");      
+      const today = todayParts.join("-");
       const times = state?._tasks
         ?.filter((el) => {
           return el.date === today;
@@ -125,6 +126,9 @@ export const useEHourStore = defineStore("EHour", {
       const result =
         (times.reduce((a, b) => a + b) + state._currentTimer) / 3600;
       return result;
+    },
+    id: (state) => {
+      return state._self ? state._self.id : null;
     },
   },
 });

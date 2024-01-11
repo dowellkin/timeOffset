@@ -1,13 +1,26 @@
 <script setup>
 import CurrentDay from "@/components/CurrentDay.vue";
 import UserInfo from "@/components/UserInfo.vue";
-import { useEHourStore } from "@/stores/everhour.js";
 import { useRouter, useRoute } from 'vue-router'
 import { computed } from 'vue';
+
+import { useCalendarStore } from "@/stores/calendar.js";
+import { useEHourStore } from "@/stores/everhour.js";
+
 
 const router = useRouter();
 const EHstore = useEHourStore();
 EHstore.init();
+
+if(EHstore.loggedIn) {
+  const calendar = useCalendarStore();
+  calendar.init();
+
+  EHstore.getMonthTasks();
+  EHstore.getCurrentTimer();
+}
+
+
 
 router.beforeEach(async (to, from, next) => {
   if(to.meta.requireLoggedIn && !EHstore.loggedIn) next({name: 'login'})
@@ -36,6 +49,10 @@ const selectedKeys = computed(() => {
   
           <a-menu-item v-if="EHstore.loggedIn" key="home" @click="router.push({name: 'home'})">
             Данные пользователя
+          </a-menu-item>
+
+          <a-menu-item v-if="EHstore.loggedIn" key="story" @click="router.push({name: 'story'})">
+            История
           </a-menu-item>
         </a-menu>
 
