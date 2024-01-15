@@ -1,11 +1,11 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { useEHourStore } from "@/stores/everhour.js";
+import { lastMonthDay, getDateString, getMonday, getSunday } from "@/utils.js";
 const day = ref();
 const week = ref();
 const month = ref();
 const type = ref('day');
-const dataToDisplay = ref([]);
 
 const EHstore = useEHourStore();
 
@@ -13,54 +13,57 @@ function log(e1, e2) {
   console.log(e1, e2)
 }
 
-function getDateString(date) {
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  let todateString = date.toLocaleDateString('ru', options);
-  todateString = todateString.replace(' г.', '');
-  todateString = todateString.replace(/\s(\d{4})/, ', $1');
-  return todateString
-}
+const getFirstLastDateWeek = computed(() => {
+  if(!week.value) return {firstDate: "", lastDate: ""};
+  const firstDate = getMonday(week.value.$d)
+  const lastDate = getSunday(week.value.$d)
+  return {firstDate, lastDate}
+})
 
-function getMonday(d) {
-  d = new Date(d);
-  const day = d.getDay(),
-    diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
-  return new Date(d.setDate(diff));
-}
+const getFirstLastDateMonth = computed(() => {
+  if(!month.value) return {firstDate: "", lastDate: ""};
+  const monthNum = month.value.$d.getMonth()
+  const firstDate = new Date(month.value.$d.setMonth(monthNum, 1))
+  const lastDate = lastMonthDay(month.value.$d, monthNum)
+  return {firstDate, lastDate}
+})
 
-function getSunday(d) {
-  const date = getMonday(d)
-  return new Date(date.setDate(date.getDate() + 6));
-}
+watch(day, () => {
+  EHstore.getTasksFromTo(day.value.$d, day.value.$d)
+})
 
-function lastMonthDay(interestedMonth = new Date().getMonth()) {
-  const date = new Date();
-  const nextmonth = interestedMonth + 1;
-  const nextmonthfirstday = new Date(date.getFullYear(), nextmonth, 1);
-  const oneday = 1 * 24 * 3600 * 1000;
-  const lasttime = new Date(nextmonthfirstday - oneday);
-  return lasttime;
-}
+watch(week, () => {
+  const {firstDate, lastDate} = getFirstLastDateWeek.value
+  EHstore.getTasksFromTo(firstDate, lastDate)
+})
+
+watch(month, () => {
+  const {firstDate, lastDate} = getFirstLastDateMonth.value
+  EHstore.getTasksFromTo(firstDate, lastDate)
+})
 
 const dateString = computed(() => {
   if(type.value == 'day') {
     if(!day.value) return "";
-    EHstore
+
     return getDateString(day.value.$d)
   }
 
   if(type.value == 'week') {
-    if(!week.value) return "";
-    const firstDate = getMonday(week.value.$d)
-    const lastDate = getSunday(week.value.$d)
+    const {firstDate, lastDate} = getFirstLastDateWeek.value
+    if(!firstDate || !lastDate) {
+      return ""
+    }
+
     return `${getDateString(firstDate)} - ${getDateString(lastDate)}`
   }
 
   if(type.value == 'month') {
-    if(!month.value) return "";
-    const monthNum = month.value.$d.getMonth()
-    const firstDate = new Date(month.value.$d.setMonth(monthNum, 1))
-    const lastDate = lastMonthDay(monthNum)
+    const {firstDate, lastDate} = getFirstLastDateMonth.value
+    if(!firstDate || !lastDate) {
+      return ""
+    }
+    
     return `${getDateString(firstDate)} - ${getDateString(lastDate)}`
   }
 
@@ -90,7 +93,15 @@ const dateString = computed(() => {
 
         <h2>{{ dateString }}</h2>
 
-
+        <pre v-if="day && type === 'day'">
+          {{ EHstore.getTasksFromDateToDate(day.$d, day.$d) }}
+        </pre>
+        <pre v-else-if="week && type === 'week'">
+          {{ EHstore.getTasksFromDateToDate(getFirstLastDateWeek.firstDate, getFirstLastDateWeek.lastDate) }}
+        </pre>
+        <pre v-else-if="month && type === 'month'">
+          {{ EHstore.getTasksFromDateToDate(getFirstLastDateMonth.firstDate, getFirstLastDateMonth.lastDate) }}
+        </pre>
       </a-space>
     </div>
   </main>

@@ -35,4 +35,24 @@ export const thatYearAndMonth = () => {
   return `${d.getFullYear()}-${numFormat(d.getMonth() + 1)}`
 }
 
+export const getDateString = (date) => {
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  let todateString = date.toLocaleDateString("ru", options);
+  todateString = todateString.replace(" г.", "");
+  todateString = todateString.replace(/\s(\d{4})/, ", $1");
+  return todateString;
+}
+
+export const getMonday = (d) => {
+  d = new Date(d);
+  const day = d.getDay(),
+    diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
+  return new Date(d.setDate(diff));
+}
+
+export const getSunday = (d) => {
+  const date = getMonday(d);
+  return new Date(date.setDate(date.getDate() + 6));
+}
+
 export { Hours };

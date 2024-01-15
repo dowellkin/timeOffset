@@ -64,18 +64,19 @@ export const useEHourStore = defineStore("EHour", {
 
     async getTasksFromTo(from, to) {
       let tasks
-      if(typeof from == 'object') {
+      if (!to) {
         tasks = await this.getTasks(from);
       } else {
         tasks = await this.getTasks({
-          from, to
+          from,
+          to,
         });
       }
 
       if (!tasks) {
         return [];
       }
-
+      tasks.reverse();
       tasks.forEach((task) => {
         if (!this._tasks[task.date]) {
           this._tasks[task.date] = [];
@@ -160,5 +161,21 @@ export const useEHourStore = defineStore("EHour", {
     id: (state) => {
       return state._self ? state._self.id : null;
     },
+    getTasksFromDateToDate: (state) => (from, to) => {
+      const fromDate = new Date(from);
+      fromDate.setUTCHours(0, 0, 0, 0);
+      const toDate = new Date(to);
+      toDate.setUTCHours(23, 59, 59, 999);
+
+      const days = {};
+      Object.entries(state._tasks).forEach(([date, day]) => {
+        const dayDate = new Date(date);
+        if(dayDate >= fromDate && dayDate <= toDate) {
+          days[date] = day
+        }
+      })
+
+      return days;
+    }
   },
 });

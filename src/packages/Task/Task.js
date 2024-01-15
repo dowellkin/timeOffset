@@ -8,8 +8,6 @@ class Task {
       const st = new SingleTrack(historyItem);
       this.history.push(st)
     });
-
-    this.collapse = false;
   }
 
   get asanaLink() {
