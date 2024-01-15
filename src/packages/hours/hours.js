@@ -1,4 +1,4 @@
-import { map } from "./utils/functions.js"
+import { map } from "@/utils.js"
 
 class Hours {
   constructor(params, ...rest) {

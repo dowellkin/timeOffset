@@ -1,5 +1,9 @@
+import { todayString, thatYearAndMonth } from "@/utils";
 import { defineStore } from 'pinia'
 import EHapi from "@/packages/everHourAPI";
+
+import { lastMonthDay } from "@/utils.js";
+import Task from "@/packages/Task"
 
 const storageName = "EH_token";
 let intervalId = -1;
@@ -12,7 +16,7 @@ export const useEHourStore = defineStore("EHour", {
     meLoading: false,
     currentStateLoading: false,
     _currentTimer: 0,
-    _tasks: null,
+    _tasks: {},
     _self: null,
   }),
 
@@ -20,7 +24,15 @@ export const useEHourStore = defineStore("EHour", {
     setToken(token) {
       this.apiKey = token;
       EHapi.setToken(token);
-      localStorage.setItem("EH_token", token);
+      localStorage.setItem(storageName, token);
+    },
+
+    init() {
+      const token = localStorage.getItem(storageName);
+      if (token) {
+        this.setToken(token);
+        this.loggedIn = true;
+      }
     },
 
     async me() {
@@ -44,18 +56,29 @@ export const useEHourStore = defineStore("EHour", {
       this.loading = true;
       const me = await this.me();
       try {
-        this._tasks = await EHapi.time(me.id, data);
-        return this._tasks;
+        return await EHapi.time(me.id, data);
       } finally {
         this.loading = false;
       }
     },
 
-    getMonthTasks(month = new Date().getMonth()) {
-      return this.getTasks({
+    async getMonthTasks(month = new Date().getMonth()) {
+      const tasks = await this.getTasks({
         from: new Date(new Date().setMonth(month, 1)),
         to: lastMonthDay(month),
       });
+
+      if (!tasks) {
+        return [];
+      }
+
+      tasks.forEach((task) => {
+        if (!this._tasks[task.date]) {
+          this._tasks[task.date] = [];
+        }
+        this._tasks[task.date].push(new Task(task));
+      });
+      return tasks;
     },
 
     getCurrentTimer() {
@@ -83,14 +106,6 @@ export const useEHourStore = defineStore("EHour", {
       });
     },
 
-    init() {
-      const token = localStorage.getItem(storageName);
-      if (token) {
-        this.setToken(token);
-        this.loggedIn = true;
-      }
-    },
-
     logout() {
       localStorage.removeItem(storageName);
     },
@@ -102,26 +117,28 @@ export const useEHourStore = defineStore("EHour", {
     tasks: (state) => state._tasks,
     self: (state) => state._self,
     currentTimer: (state) => state._currentTimer,
-    hours: (state) => {
-      const times = state?._tasks?.map((el) => el.time);
+    thatMonthHours: (state) => {
+      const todayYearAndMonth = thatYearAndMonth();
+      return state.getMonthHours(todayYearAndMonth);
+    },
+    getMonthHours: (state) => (yearAndMonth) => {
+      if (state._tasks.length == 0) return 0;
+      const times = [];
+      Object.entries(state._tasks).forEach(([date, day]) => {
+        if (date.startsWith(yearAndMonth)) {
+          times.push(...day.map((task) => task.time));
+        }
+      });
       if (!times || times.length == 0) return 0;
       const result =
         (times.reduce((a, b) => a + b) + state._currentTimer) / 3600;
       return result;
     },
     todayHours: (state) => {
-      const d = new Date();
-      const todayParts = [
-        d.getFullYear(),
-        String(d.getMonth() + 1).padStart(2, "0"),
-        String(d.getDate()).padStart(2, "0"),
-      ];
-      const today = todayParts.join("-");
-      const times = state?._tasks
-        ?.filter((el) => {
-          return el.date === today;
-        })
-        .map((el) => el.time);
+      const today = todayString();
+      const todayTasks = state?._tasks[today]
+      if(!todayTasks) return 0
+      const times = todayTasks.map((el) => el.time);
       if (times.length == 0) return state._currentTimer / 3600;
       const result =
         (times.reduce((a, b) => a + b) + state._currentTimer) / 3600;
@@ -132,12 +149,3 @@ export const useEHourStore = defineStore("EHour", {
     },
   },
 });
-
-function lastMonthDay(interestedMonth = new Date().getMonth()) {
-  const date = new Date();
-  const nextmonth = interestedMonth + 1;
-  const nextmonthfirstday = new Date(date.getFullYear(), nextmonth, 1);
-  const oneday = 1 * 24 * 3600 * 1000;
-  const lasttime = new Date(nextmonthfirstday - oneday);
-  return lasttime;
-}

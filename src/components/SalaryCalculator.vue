@@ -18,7 +18,7 @@ const incoming = ref(0);
 const percent = ref(0);
 
 const hours = computed(() => {
-  return EHstore.hours;
+  return EHstore.thatMonthHours;
 })
 
 const rate = computed(() => {

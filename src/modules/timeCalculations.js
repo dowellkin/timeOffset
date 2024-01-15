@@ -30,7 +30,7 @@ export default () => {
   });
 
   const tracked = computed(() => {
-    return Hours(EHstore.hours * 60);
+    return Hours(EHstore.thatMonthHours * 60);
   });
 
   const bias = computed(() => {
