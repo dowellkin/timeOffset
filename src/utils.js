@@ -1,12 +1,16 @@
 import Hours from "@/packages/hours"
 
-export function lastMonthDay(interestedMonth = new Date().getMonth()) {
-  const date = new Date();
-  const nextmonth = interestedMonth + 1;
-  const nextmonthfirstday = new Date(date.getFullYear(), nextmonth, 1);
-  const oneday = 1 * 24 * 3600 * 1000;
-  const lasttime = new Date(nextmonthfirstday - oneday);
-  return lasttime;
+export function lastMonthDay(interestedDate = new Date(), interestedMonth = new Date().getMonth()) {
+  console.log(interestedDate)
+  const nextMonth = interestedMonth + 1;
+  const nextMonthFirstDay = new Date(
+    interestedDate.getFullYear(),
+    nextMonth,
+    1
+  );
+  const oneDay = 1 * 24 * 3600 * 1000;
+  const lastTime = new Date(nextMonthFirstDay - oneDay);
+  return lastTime;
 }
 
 export const map = (value, low1, high1, low2, high2) => {
@@ -17,9 +21,13 @@ export const numFormat = (value) => {
   return String(value).padStart(2, "0");
 };
 
+export const dateToString = (date) => {
+  return `${date.getFullYear()}-${numFormat(date.getMonth() + 1)}-${numFormat(date.getDate())}`
+}
+
 export const todayString = () => {
   const d = new Date();
-  return `${d.getFullYear()}-${numFormat(d.getMonth() + 1)}-${numFormat(d.getDate())}`
+  return dateToString(d)
 }
 
 export const thatYearAndMonth = () => {

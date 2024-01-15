@@ -1,15 +1,13 @@
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, computed } from 'vue';
 import { useEHourStore } from "@/stores/everhour.js";
 const day = ref();
 const week = ref();
 const month = ref();
 const type = ref('day');
+const dataToDisplay = ref([]);
 
-const store = useEHourStore();
-const id = computed(() => {
-  return store.id
-})
+const EHstore = useEHourStore();
 
 function log(e1, e2) {
   console.log(e1, e2)
@@ -46,8 +44,9 @@ function lastMonthDay(interestedMonth = new Date().getMonth()) {
 
 const dateString = computed(() => {
   if(type.value == 'day') {
-      if(!day.value) return "";
-      return getDateString(day.value.$d)
+    if(!day.value) return "";
+    EHstore
+    return getDateString(day.value.$d)
   }
 
   if(type.value == 'week') {
@@ -72,22 +71,27 @@ const dateString = computed(() => {
 <template>
   <main>
     <div class="container">
-      <a-select
-        ref="select"
-        v-model:value="type"
-        style="width: 120px"
-      >
-        <a-select-option value="day">Day</a-select-option>
-        <a-select-option value="week">Week</a-select-option>
-        <a-select-option value="month">Month</a-select-option>
-      </a-select>
+      <a-space direction="vertical" :value="16">
+        <a-space>
+          <a-select
+            ref="select"
+            v-model:value="type"
+            style="width: 120px"
+          >
+            <a-select-option value="day">Day</a-select-option>
+            <a-select-option value="week">Week</a-select-option>
+            <a-select-option value="month">Month</a-select-option>
+          </a-select>
 
-      <a-date-picker v-if="type === 'day'" v-model:value="day" @change="log" />
-      <a-date-picker v-else-if="type === 'week'" v-model:value="week" picker="week" @change="log"/>
-      <a-date-picker v-else-if="type === 'month'" v-model:value="month" picker="month" @change="log"/>
+          <a-date-picker v-if="type === 'day'" v-model:value="day" @change="log" />
+          <a-date-picker v-else-if="type === 'week'" v-model:value="week" picker="week" @change="log"/>
+          <a-date-picker v-else-if="type === 'month'" v-model:value="month" picker="month" @change="log"/>
+        </a-space>
 
-      
-      <h2>{{ dateString }}</h2>
+        <h2>{{ dateString }}</h2>
+
+
+      </a-space>
     </div>
   </main>
 </template>

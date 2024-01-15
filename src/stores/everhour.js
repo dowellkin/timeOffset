@@ -62,11 +62,15 @@ export const useEHourStore = defineStore("EHour", {
       }
     },
 
-    async getMonthTasks(month = new Date().getMonth()) {
-      const tasks = await this.getTasks({
-        from: new Date(new Date().setMonth(month, 1)),
-        to: lastMonthDay(month),
-      });
+    async getTasksFromTo(from, to) {
+      let tasks
+      if(typeof from == 'object') {
+        tasks = await this.getTasks(from);
+      } else {
+        tasks = await this.getTasks({
+          from, to
+        });
+      }
 
       if (!tasks) {
         return [];
@@ -79,6 +83,15 @@ export const useEHourStore = defineStore("EHour", {
         this._tasks[task.date].push(new Task(task));
       });
       return tasks;
+    },
+
+    async getMonthTasks(dateWithMonth = new Date()) {
+      const month = dateWithMonth.getMonth();
+      const dataToFetch = {
+        from: new Date(dateWithMonth.setMonth(month, 1)),
+        to: lastMonthDay(dateWithMonth, month)
+      };
+      return await this.getTasksFromTo(dataToFetch);
     },
 
     getCurrentTimer() {
