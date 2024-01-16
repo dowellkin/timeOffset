@@ -38,7 +38,8 @@ export const getDateString = (date) => {
   const options = { year: "numeric", month: "long", day: "numeric" };
   let todateString = date.toLocaleDateString("ru", options);
   todateString = todateString.replace(" г.", "");
-  todateString = todateString.replace(/\s(\d{4})/, ", $1");
+  todateString = todateString.replace(/\s(\d{4})/, ",\xa0$1");
+  todateString = todateString.replaceAll(/\s/g, "\xa0");
   return todateString;
 }
 
