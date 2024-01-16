@@ -1,4 +1,5 @@
 <script setup>
+import TaskList from "@/components/TaskList/index.vue";
 import { ref, computed, watch } from 'vue';
 import { useEHourStore } from "@/stores/everhour.js";
 import { lastMonthDay, getDateString, getMonday, getSunday } from "@/utils.js";
@@ -6,6 +7,7 @@ const day = ref();
 const week = ref();
 const month = ref();
 const type = ref('day');
+const collapsed = ref(false);
 
 const EHstore = useEHourStore();
 
@@ -74,35 +76,49 @@ const dateString = computed(() => {
 <template>
   <main>
     <div class="container">
-      <a-space direction="vertical" :value="16">
-        <a-space>
-          <a-select
-            ref="select"
-            v-model:value="type"
-            style="width: 120px"
-          >
-            <a-select-option value="day">Day</a-select-option>
-            <a-select-option value="week">Week</a-select-option>
-            <a-select-option value="month">Month</a-select-option>
-          </a-select>
+      <a-space style="margin-bottom: 20px">
+        <a-select
+          ref="select"
+          v-model:value="type"
+          style="width: 120px"
+        >
+          <a-select-option value="day">Day</a-select-option>
+          <a-select-option value="week">Week</a-select-option>
+          <a-select-option value="month">Month</a-select-option>
+        </a-select>
 
-          <a-date-picker v-if="type === 'day'" v-model:value="day" @change="log" />
-          <a-date-picker v-else-if="type === 'week'" v-model:value="week" picker="week" @change="log"/>
-          <a-date-picker v-else-if="type === 'month'" v-model:value="month" picker="month" @change="log"/>
-        </a-space>
+        <a-date-picker v-if="type === 'day'" v-model:value="day" @change="log" />
+        <a-date-picker v-else-if="type === 'week'" v-model:value="week" picker="week" @change="log"/>
+        <a-date-picker v-else-if="type === 'month'" v-model:value="month" picker="month" @change="log"/>
 
-        <h2>{{ dateString }}</h2>
-
-        <pre v-if="day && type === 'day'">
-          {{ EHstore.getTasksFromDateToDate(day.$d, day.$d) }}
-        </pre>
-        <pre v-else-if="week && type === 'week'">
-          {{ EHstore.getTasksFromDateToDate(getFirstLastDateWeek.firstDate, getFirstLastDateWeek.lastDate) }}
-        </pre>
-        <pre v-else-if="month && type === 'month'">
-          {{ EHstore.getTasksFromDateToDate(getFirstLastDateMonth.firstDate, getFirstLastDateMonth.lastDate) }}
-        </pre>
+        <a-checkbox v-model:checked="collapsed">Collapsed</a-checkbox>
       </a-space>
+
+      <h2 v-if="type != 'day'">{{ dateString }}</h2>
+
+      
+
+      <template v-if="day && type === 'day'">
+        <TaskList
+          :task-list="EHstore.getTasksFromDateToDate(day.$d, day.$d)"
+          :collapsed="collapsed"
+        >
+        </TaskList>
+      </template>
+      <template v-else-if="week && type === 'week'">
+        <TaskList
+          :task-list="EHstore.getTasksFromDateToDate(getFirstLastDateWeek.firstDate, getFirstLastDateWeek.lastDate)"
+          :collapsed="collapsed"
+        >
+        </TaskList>
+      </template>
+      <template v-else-if="month && type === 'month'">
+        <TaskList
+          :task-list="EHstore.getTasksFromDateToDate(getFirstLastDateMonth.firstDate, getFirstLastDateMonth.lastDate)"
+          :collapsed="collapsed"
+        >
+        </TaskList>
+      </template>
     </div>
   </main>
 </template>

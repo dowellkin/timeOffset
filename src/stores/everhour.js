@@ -77,9 +77,12 @@ export const useEHourStore = defineStore("EHour", {
         return [];
       }
       tasks.reverse();
+
+      const clearedDates = [];
       tasks.forEach((task) => {
-        if (!this._tasks[task.date]) {
+        if (!this._tasks[task.date] || !clearedDates.includes(task.date)) {
           this._tasks[task.date] = [];
+          clearedDates.push(task.date);
         }
         this._tasks[task.date].push(new Task(task));
       });

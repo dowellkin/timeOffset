@@ -1,7 +1,6 @@
 import Hours from "@/packages/hours"
 
 export function lastMonthDay(interestedDate = new Date(), interestedMonth = new Date().getMonth()) {
-  console.log(interestedDate)
   const nextMonth = interestedMonth + 1;
   const nextMonthFirstDay = new Date(
     interestedDate.getFullYear(),
