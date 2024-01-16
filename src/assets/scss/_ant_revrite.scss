@@ -120,6 +120,11 @@
 .ant-card {
     border-radius: rem(5);
     border: 1px solid var(--color-black-200);
+    max-width: 100%;
+}
+
+.login-form__inputs-wrapper {
+    max-width: 100%;
 }
 
 .ant-form-item-control-input-content {

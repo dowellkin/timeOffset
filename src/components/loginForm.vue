@@ -119,11 +119,16 @@ export default defineComponent({
   &__inputs-wrapper {
     display: flex;
     gap: rem(20);
+
+    @media screen and (max-width: 550px) {
+      flex-direction: column;
+      gap: rem(5);
+    }
   }
 
   &__left-part {
     input {
-      min-width: rem(600);
+      width: min(#{rem(600)}, 100%);;
     }
   }
 }

@@ -91,7 +91,7 @@ const dateString = computed(() => {
         <a-date-picker v-else-if="type === 'week'" v-model:value="week" picker="week" @change="log"/>
         <a-date-picker v-else-if="type === 'month'" v-model:value="month" picker="month" @change="log"/>
 
-        <a-checkbox v-model:checked="collapsed">Collapsed</a-checkbox>
+        <!-- <a-checkbox v-model:checked="collapsed">Collapsed</a-checkbox> -->
       </a-space>
 
       <h2 v-if="type != 'day'">{{ dateString }}</h2>
