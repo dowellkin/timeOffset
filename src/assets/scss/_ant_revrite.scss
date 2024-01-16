@@ -2,6 +2,10 @@
     background-color: var(--color-black-100);
     border-bottom: 1px solid var(--color-black-200);
     height: auto;
+
+    @media screen and (max-width: 768px) {
+        padding: 0 rem(10);
+    }
 }
 
 .ant-menu.ant-menu-dark,
@@ -18,9 +22,14 @@
     line-height: rem(98);
     min-width: rem(212);
     text-align: center;
-    padding: 0;
     position: relative;
     letter-spacing: rem(-0.4);
+
+    @media screen and (max-width: 768px) {
+        font-size: rem(16);
+        min-width: rem(100);
+        padding: 0 10px;
+    }
 
     &::after {
         content: '';
@@ -57,6 +66,37 @@
     }
 }
 
+.ant-menu .ant-menu-submenu-title {
+    color: var(--color-text);
+    font-size: rem(20);
+    line-height: rem(98);
+
+    &:hover {
+        color: var(--color-primary-600);
+    }
+}
+
+.ant-menu-submenu.ant-menu-submenu-popup {
+    background: #fff;
+
+    .ant-menu-item {
+        color: var(--color-text);
+        line-height: 40px;
+        padding: 0 20px;
+        transform: color .3s ease, background-color .3s ease;
+
+        &:hover {
+            color: #fff;
+            background-color: color-mix(in srgb, var(--color-primary-600), transparent 30%);
+        }
+
+        &.ant-menu-item-selected {
+            color: #fff;
+            background-color: var(--color-primary-600);
+        }
+    }
+}
+
 .ant-layout-content {
     margin-top: rem(60);
 
@@ -71,7 +111,6 @@
 
 .ant-card-body {
     padding: rem(40);
-
 
     @include breakpoint(sm) {
         padding: rem(20);
