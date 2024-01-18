@@ -61,11 +61,20 @@ const dataToShow = computed(() => {
 function getLocalTime(time) {
   return String(time.getHours() + SERVER_HOURS_OFFSET).padStart(2, '0') + ':' + String(time.getMinutes()).padStart(2, '0')
 }
+
+function prettyHours(hours) {
+  let result = ''
+  if(hours.hour > 0) {
+    result += hours.hour + 'h '
+  }
+  result += hours.minute + 'm'
+  return result
+}
 </script>
 
 <template>
   <div class="day">
-    <h3>
+    <h3 class="day-date">
       {{ totalTime }}: {{ prettyDate }}
     </h3>
     <a-list item-layout="horizontal" :data-source="dataToShow">
@@ -93,7 +102,7 @@ function getLocalTime(time) {
             <template #avatar>
               <div class="time-wrapper" :class="{ 'negative': item.time < 0 }">
                 <template v-if="collapsed">
-                  {{ hours(item.time / 60) }}
+                  {{ prettyHours(hours(item.time / 60)) }}
                 </template>
 
                 <a-tooltip
@@ -120,7 +129,7 @@ function getLocalTime(time) {
                     </div>
                   </template>
 
-                  {{ hours(item.time / 60) }}
+                  {{ prettyHours(hours(item.time / 60)) }}
                 </a-tooltip>
               </div>
             </template>
@@ -163,5 +172,14 @@ function getLocalTime(time) {
   grid-template-rows: 1fr 1fr;
   gap: 5px 10px;
   padding: 5px 10px;
+}
+
+.day-date {
+  position: sticky;
+  top: 0;
+  padding-block: 10px;
+  z-index: 1;
+  background: linear-gradient(0deg, transparent 0px, var(--color-black-100) 12px);
+  margin: 0;
 }
 </style>
