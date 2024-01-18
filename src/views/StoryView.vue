@@ -7,7 +7,7 @@ const day = ref();
 const week = ref();
 const month = ref();
 const type = ref('day');
-const collapsed = ref(false);
+const collapsed = ref(true);
 
 const EHstore = useEHourStore();
 
@@ -99,11 +99,11 @@ watch(month, () => {
           <a-select-option value="month">Month</a-select-option>
         </a-select>
 
-        <a-date-picker v-if="type === 'day'" v-model:value="day" @change="log" />
-        <a-date-picker v-else-if="type === 'week'" v-model:value="week" picker="week" @change="log"/>
-        <a-date-picker v-else-if="type === 'month'" v-model:value="month" picker="month" @change="log"/>
+        <a-date-picker v-if="type === 'day'" v-model:value="day"/>
+        <a-date-picker v-else-if="type === 'week'" v-model:value="week" picker="week"/>
+        <a-date-picker v-else-if="type === 'month'" v-model:value="month" picker="month"/>
 
-        <!-- <a-checkbox v-model:checked="collapsed">Collapsed</a-checkbox> -->
+        <a-checkbox v-model:checked="collapsed">Collapsed</a-checkbox>
       </a-space>
 
       <h2 v-if="type != 'day'">{{ dateString }}</h2>
