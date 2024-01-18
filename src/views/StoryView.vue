@@ -11,10 +11,6 @@ const collapsed = ref(false);
 
 const EHstore = useEHourStore();
 
-function log(e1, e2) {
-  console.log(e1, e2)
-}
-
 const getFirstLastDateWeek = computed(() => {
   if(!week.value) return {firstDate: "", lastDate: ""};
   const firstDate = getMonday(week.value.$d)
@@ -28,20 +24,6 @@ const getFirstLastDateMonth = computed(() => {
   const firstDate = new Date(month.value.$d.setMonth(monthNum, 1))
   const lastDate = lastMonthDay(month.value.$d, monthNum)
   return {firstDate, lastDate}
-})
-
-watch(day, () => {
-  EHstore.getTasksFromTo(day.value.$d, day.value.$d)
-})
-
-watch(week, () => {
-  const {firstDate, lastDate} = getFirstLastDateWeek.value
-  EHstore.getTasksFromTo(firstDate, lastDate)
-})
-
-watch(month, () => {
-  const {firstDate, lastDate} = getFirstLastDateMonth.value
-  EHstore.getTasksFromTo(firstDate, lastDate)
 })
 
 const dateString = computed(() => {
@@ -71,6 +53,36 @@ const dateString = computed(() => {
 
   return "";
 })
+
+const tasks = computed(() => {
+  if(day.value && type.value === 'day') {
+    return EHstore.getTasksFromDateToDate(day.value.$d, day.value.$d)
+  }
+
+  if(week.value && type.value === 'week') {
+    return EHstore.getTasksFromDateToDate(getFirstLastDateWeek.value.firstDate, getFirstLastDateWeek.value.lastDate)
+  }
+
+  if(month.value && type.value === 'month') {
+    return EHstore.getTasksFromDateToDate(getFirstLastDateMonth.value.firstDate, getFirstLastDateMonth.value.lastDate)
+  }
+
+  return []
+})
+
+watch(day, () => {
+  EHstore.getTasksFromTo(day.value.$d, day.value.$d)
+})
+
+watch(week, () => {
+  const {firstDate, lastDate} = getFirstLastDateWeek.value
+  EHstore.getTasksFromTo(firstDate, lastDate)
+})
+
+watch(month, () => {
+  const {firstDate, lastDate} = getFirstLastDateMonth.value
+  EHstore.getTasksFromTo(firstDate, lastDate)
+})
 </script>
 
 <template>
@@ -96,29 +108,11 @@ const dateString = computed(() => {
 
       <h2 v-if="type != 'day'">{{ dateString }}</h2>
 
-      
-
-      <template v-if="day && type === 'day'">
-        <TaskList
-          :task-list="EHstore.getTasksFromDateToDate(day.$d, day.$d)"
-          :collapsed="collapsed"
-        >
-        </TaskList>
-      </template>
-      <template v-else-if="week && type === 'week'">
-        <TaskList
-          :task-list="EHstore.getTasksFromDateToDate(getFirstLastDateWeek.firstDate, getFirstLastDateWeek.lastDate)"
-          :collapsed="collapsed"
-        >
-        </TaskList>
-      </template>
-      <template v-else-if="month && type === 'month'">
-        <TaskList
-          :task-list="EHstore.getTasksFromDateToDate(getFirstLastDateMonth.firstDate, getFirstLastDateMonth.lastDate)"
-          :collapsed="collapsed"
-        >
-        </TaskList>
-      </template>
+      <TaskList
+        :task-list="tasks"
+        :collapsed="collapsed"
+      >
+      </TaskList>
     </div>
   </main>
 </template>
