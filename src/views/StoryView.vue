@@ -1,5 +1,6 @@
 <script setup>
 import TaskList from "@/components/TaskList/index.vue";
+import hours from "@/packages/hours/index.js";
 import { ref, computed, watch } from 'vue';
 import { useEHourStore } from "@/stores/everhour.js";
 import { lastMonthDay, getDateString, getMonday, getSunday } from "@/utils.js";
@@ -70,6 +71,18 @@ const tasks = computed(() => {
   return []
 })
 
+const dateWithTime = computed(() => {
+  let timeCount = 0;
+  console.log(`task value`, tasks.value)
+  Object.values(tasks.value).forEach(day => {
+    day.forEach(task => {
+      timeCount += task.time
+    })
+  })
+
+  return [hours(timeCount / 60), dateString.value]
+})
+
 watch(day, () => {
   EHstore.getTasksFromTo(day.value.$d, day.value.$d)
 })
@@ -106,7 +119,16 @@ watch(month, () => {
         <a-checkbox v-model:checked="collapsed">Collapsed</a-checkbox>
       </a-space>
 
-      <h2 v-if="type != 'day'">{{ dateString }}</h2>
+      <h2 v-if="type != 'day'">
+        <span
+          v-if="dateWithTime[0].toNumber()"
+          class="header-content__full-time"
+        >
+          {{ dateWithTime[0] }}:
+        </span>
+
+        {{ dateWithTime[1] }}
+      </h2>
 
       <TaskList
         :task-list="tasks"
@@ -121,4 +143,8 @@ watch(month, () => {
 @use "@/assets/scss/variables.scss" as *;
 @use "@/assets/scss/mixins.scss" as *;
 
+.header-content__full-time {
+  font-size: 0.9em;
+  opacity: 0.9;
+}
 </style>

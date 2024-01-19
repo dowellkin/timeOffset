@@ -75,7 +75,11 @@ function prettyHours(hours) {
 <template>
   <div class="day">
     <h3 class="day-date">
-      {{ totalTime }}: {{ prettyDate }}
+      <span
+        class="header-content__full-time"
+      >
+        {{ totalTime }}:
+      </span> {{ prettyDate }}
     </h3>
     <a-list item-layout="horizontal" :data-source="dataToShow">
       <template #renderItem="{ item }">
@@ -158,10 +162,6 @@ function prettyHours(hours) {
   color: var(--color-red-600)
 }
 
-.time-wrapper.negative::before {
-  content: '-'
-}
-
 .mr-5 {
   margin-right: 5px;
 }
@@ -181,5 +181,10 @@ function prettyHours(hours) {
   z-index: 1;
   background: linear-gradient(0deg, transparent 0px, var(--color-black-100) 12px);
   margin: 0;
+}
+
+.header-content__full-time {
+  font-size: 0.9em;
+  opacity: 0.9;
 }
 </style>
