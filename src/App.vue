@@ -7,6 +7,9 @@ import { computed } from 'vue';
 import { useCalendarStore } from "@/stores/calendar.js";
 import { useEHourStore } from "@/stores/everhour.js";
 
+// должно переключать язык на русский и ставить понедельник первым днём недели, но не тут то было...
+import "dayjs/locale/ru";
+import locale from 'ant-design-vue/es/locale/ru_RU';
 
 const router = useRouter();
 const EHstore = useEHourStore();
@@ -34,48 +37,50 @@ const selectedKeys = computed(() => {
 </script>
 
 <template>
-  <a-layout class="layout">
-    <a-layout-header>
-      <div class="header-content__wrapper">
-        <a-menu
-          v-model:selectedKeys="selectedKeys"
-          theme="dark"
-          mode="horizontal"
-          :style="{ lineHeight: '64px' }"
-        >
-          <a-menu-item v-if="!EHstore.loggedIn" key="login" @click="router.push({name: 'login'})">
-            Вход
-          </a-menu-item>
-  
-          <a-menu-item v-if="EHstore.loggedIn" key="home" @click="router.push({name: 'home'})">
-            Данные пользователя
-          </a-menu-item>
+  <a-config-provider :locale="locale">
+    <a-layout class="layout">
+      <a-layout-header>
+        <div class="header-content__wrapper">
+          <a-menu
+            v-model:selectedKeys="selectedKeys"
+            theme="dark"
+            mode="horizontal"
+            :style="{ lineHeight: '64px' }"
+          >
+            <a-menu-item v-if="!EHstore.loggedIn" key="login" @click="router.push({name: 'login'})">
+              Вход
+            </a-menu-item>
+    
+            <a-menu-item v-if="EHstore.loggedIn" key="home" @click="router.push({name: 'home'})">
+              Данные пользователя
+            </a-menu-item>
 
-          <a-menu-item v-if="EHstore.loggedIn" key="story" @click="router.push({name: 'story'})">
-            История
-          </a-menu-item>
-        </a-menu>
+            <a-menu-item v-if="EHstore.loggedIn" key="story" @click="router.push({name: 'story'})">
+              История
+            </a-menu-item>
+          </a-menu>
 
-        <template v-if="EHstore.loggedIn">
-          <CurrentDay class="header-content__day hide-lg-flex">
-          </CurrentDay>
-  
-          <UserInfo class="header-content__user hide-lg-flex">
-          </UserInfo>
-        </template>
-      </div>
-    </a-layout-header>
+          <template v-if="EHstore.loggedIn">
+            <CurrentDay class="header-content__day hide-lg-flex">
+            </CurrentDay>
+    
+            <UserInfo class="header-content__user hide-lg-flex">
+            </UserInfo>
+          </template>
+        </div>
+      </a-layout-header>
 
-    <a-layout-content class="layout-content">
-      <div class="main-content__wrapper">
-        <router-view />
-      </div>
-    </a-layout-content>
+      <a-layout-content class="layout-content">
+        <div class="main-content__wrapper">
+          <router-view />
+        </div>
+      </a-layout-content>
 
-    <a-layout-footer style="text-align: center">
-      Timcher ©{{ new Date().getFullYear() }} Created by Alexandr Korolev
-    </a-layout-footer>
-  </a-layout>
+      <a-layout-footer style="text-align: center">
+        Timcher ©{{ new Date().getFullYear() }} Created by Alexandr Korolev
+      </a-layout-footer>
+    </a-layout>
+  </a-config-provider>
 </template>
 
 <style scoped>

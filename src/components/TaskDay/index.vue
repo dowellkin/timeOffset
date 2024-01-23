@@ -64,10 +64,13 @@ function getLocalTime(time) {
 
 function prettyHours(hours) {
   let result = ''
-  if(hours.hour > 0) {
-    result += hours.hour + 'h '
+  if(hours.hour < 0 || hours.minute < 0) {
+    result += '-'
   }
-  result += hours.minute + 'm'
+  if(hours.hour !== 0) {
+    result += Math.abs(hours.hour) + 'h '
+  }
+  result += Math.abs(hours.minute) + 'm'
   return result
 }
 </script>
@@ -89,14 +92,14 @@ function prettyHours(hours) {
           >
             <template #title>
               <a-tooltip
-                v-if="item.action === 'EDIT'"
+                v-if="item.action !== 'TIMER' && !props.collapsed"
                 placement="top"
               >
                 <template #title>Изменено менеджером</template>
 
                 <ToolOutlined class="mr-5"/>
               </a-tooltip>
-              
+
               <a :href="item.asanaLink" target="_blank">
                 <LogoAsana class="mr-5"/>
                 {{ item.name }}
@@ -115,21 +118,33 @@ function prettyHours(hours) {
                 >
                   <template #title>
                     <div class="time-grid">
-                      <div>
-                        Начал:
-                      </div>
-  
-                      <div>
-                        {{ getLocalTime(item.createdAt) }}
-                      </div>
-  
-                      <div>
-                        Закончил:
-                      </div>
-  
-                      <div>
-                        {{ getLocalTime(item.endedAt) }}
-                      </div>
+                      <template v-if="item.action !== 'TIMER'">
+                        <div>
+                          Изменили:
+                        </div>
+    
+                        <div>
+                          {{ getDateString(item.createdAt) }} {{ getLocalTime(item.createdAt) }}
+                        </div>
+                      </template>
+
+                      <template v-else>
+                        <div>
+                          Начал:
+                        </div>
+    
+                        <div>
+                          {{ getLocalTime(item.createdAt) }}
+                        </div>
+    
+                        <div>
+                          Закончил:
+                        </div>
+    
+                        <div>
+                          {{ getLocalTime(item.endedAt) }}
+                        </div>
+                      </template>
                     </div>
                   </template>
 
@@ -169,7 +184,7 @@ function prettyHours(hours) {
 .time-grid {
   display: grid;
   grid-template-columns: auto auto;
-  grid-template-rows: 1fr 1fr;
+  /* grid-template-rows: 1fr 1fr; */
   gap: 5px 10px;
   padding: 5px 10px;
 }

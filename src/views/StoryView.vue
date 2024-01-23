@@ -4,6 +4,7 @@ import hours from "@/packages/hours/index.js";
 import { ref, computed, watch } from 'vue';
 import { useEHourStore } from "@/stores/everhour.js";
 import { lastMonthDay, getDateString, getMonday, getSunday } from "@/utils.js";
+
 const day = ref();
 const week = ref();
 const month = ref();
@@ -73,7 +74,6 @@ const tasks = computed(() => {
 
 const dateWithTime = computed(() => {
   let timeCount = 0;
-  console.log(`task value`, tasks.value)
   Object.values(tasks.value).forEach(day => {
     day.forEach(task => {
       timeCount += task.time
